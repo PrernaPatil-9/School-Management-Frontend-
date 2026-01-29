@@ -204,72 +204,58 @@
         </nav>
     </header>
 
-    <!-- Hero Banner with Parallax -->
-    <section class="relative overflow-hidden py-20 text-black">
-    <!-- Background Video -->
-    <video
-        src="assets/School1.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-        class="absolute inset-0 w-full h-full object-cover"
-    ></video>
+   <!-- Hero Banner with Parallax -->
+<section class="relative overflow-hidden py-40 text-white">
 
-    <!-- Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/60 to-green-600/60"></div>
-
-    <!-- Strong Dark Overlay -->
-    <div class="absolute inset-0 bg-black/60"></div>
-
-    <!-- Extra Vignette Effect -->
-    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/70"></div>
-
-    <!-- Animated background elements -->
-    <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-white/10 float-animation"></div>
-        <div class="absolute top-1/4 right-20 w-16 h-16 rounded-full bg-white/10 float-animation" style="animation-delay: 0.5s;"></div>
-        <div class="absolute bottom-20 left-1/4 w-24 h-24 rounded-full bg-white/10 float-animation" style="animation-delay: 1s;"></div>
-        <div class="absolute bottom-10 right-10 w-12 h-12 rounded-full bg-white/10 float-animation" style="animation-delay: 1.5s;"></div>
-    </div>
+    <!-- Single div with background and CSS gradient overlay -->
+    <div 
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style="
+            background-image: 
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)),
+                url('assets/banner.jfif');
+        "
+    ></div>
 
     <!-- Content -->
-    <div class="container mx-auto px-4 text-center relative z-10">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in-up text-black">
+    <div class="container mx-auto px-4 text-center relative z-10 flex flex-col justify-center h-full">
+
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in-up">
             Our Programs & Curriculum
         </h1>
 
-        <p
-            class="text-xl md:text-2xl max-w-3xl mx-auto mb-8 fade-in-up text-white/90"
+        <p 
+            class="text-xl md:text-2xl max-w-3xl mx-auto mb-12 text-white/90 fade-in-up" 
             style="animation-delay: 0.2s;"
         >
             Age-appropriate learning programs designed to foster holistic development
         </p>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mt-12">
-            <div class="bg-white/15 backdrop-blur-sm p-6 rounded-xl fade-in-up text-black" style="animation-delay: 0.4s;">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+
+            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-xl fade-in-up border border-white/30" style="animation-delay: 0.4s;">
                 <div class="text-3xl font-bold mb-2">4</div>
-                <div class="text-sm">Age Groups</div>
+                <div class="text-sm text-white/90">Age Groups</div>
             </div>
 
-            <div class="bg-white/15 backdrop-blur-sm p-6 rounded-xl fade-in-up text-black" style="animation-delay: 0.5s;">
+            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-xl fade-in-up border border-white/30" style="animation-delay: 0.5s;">
                 <div class="text-3xl font-bold mb-2">50+</div>
-                <div class="text-sm">Activities Monthly</div>
+                <div class="text-sm text-white/90">Activities Monthly</div>
             </div>
 
-            <div class="bg-white/15 backdrop-blur-sm p-6 rounded-xl fade-in-up text-black" style="animation-delay: 0.6s;">
+            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-xl fade-in-up border border-white/30" style="animation-delay: 0.6s;">
                 <div class="text-3xl font-bold mb-2">10+</div>
-                <div class="text-sm">Learning Methods</div>
+                <div class="text-sm text-white/90">Learning Methods</div>
             </div>
 
-            <div class="bg-white/15 backdrop-blur-sm p-6 rounded-xl fade-in-up text-black" style="animation-delay: 0.7s;">
+            <div class="bg-white/20 backdrop-blur-sm p-6 rounded-xl fade-in-up border border-white/30" style="animation-delay: 0.7s;">
                 <div class="text-3xl font-bold mb-2">100%</div>
-                <div class="text-sm">Satisfaction Rate</div>
+                <div class="text-sm text-white/90">Satisfaction Rate</div>
             </div>
+
         </div>
     </div>
 </section>
-
 
 
     <!-- Programs Navigation -->
@@ -1010,47 +996,70 @@
 </section> -->
 
     <!-- CTA Banner -->
-    <section class="py-20 relative overflow-hidden">
-        <!-- Background with gradient -->
-        <div class="absolute inset-0 bg-gradient-to-r from-emerald-500 to-green-600">
-            <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
-                <div class="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-white/10"></div>
-                <div class="absolute top-1/2 -right-20 w-80 h-80 rounded-full bg-white/10"></div>
-                <div class="absolute -bottom-20 left-1/3 w-96 h-96 rounded-full bg-white/10"></div>
+   <section class="py-20 relative overflow-hidden bg-purple-900">
+    <!-- Background with purple gradient -->
+    <!-- <div class="absolute inset-0 bg-gradient-to-r from-pink-500 to-rose-500"> -->
+        <div class="absolute inset-0 bg-gradient-to-r from-violet-600 to-fuchsia-600">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-90">
+            <div class="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-white/10"></div>
+            <div class="absolute top-1/2 -right-20 w-80 h-80 rounded-full bg-white/10"></div>
+            <div class="absolute -bottom-20 left-1/3 w-96 h-96 rounded-full bg-white/10"></div>
+        </div>
+    </div>
+    
+    <div class="container mx-auto px-4 text-center relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 drop-shadow-lg">
+            Ready to Choose the Right Program?
+        </h2>
+        <p class="text-xl text-white mb-8 max-w-2xl mx-auto drop-shadow-md">
+            Contact us to schedule a visit and see our programs in action. We'll help you choose the best fit for your child.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="contact.html" class="bg-white text-purple-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center justify-center">
+                <span class="material-icons mr-2">calendar_today</span>
+                Schedule a Visit
+            </a>
+            <a href="tel:+15551234567" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all transform hover:scale-105 inline-flex items-center justify-center shadow-md">
+                <span class="material-icons mr-2">call</span>
+                Call Now
+            </a>
+        </div>
+        
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div class="bg-white/20 backdrop-blur-md p-6 rounded-xl border border-white/30 shadow-lg">
+                <div class="text-white font-bold text-xl mb-2 drop-shadow-md">Free Trial</div>
+                <div class="text-white font-medium">1-day trial available for all programs</div>
+            </div>
+            <div class="bg-white/20 backdrop-blur-md p-6 rounded-xl border border-white/30 shadow-lg">
+                <div class="text-white font-bold text-xl mb-2 drop-shadow-md">Open House</div>
+                <div class="text-white font-medium">Every Saturday 10 AM - 12 PM</div>
+            </div>
+            <div class="bg-white/20 backdrop-blur-md p-6 rounded-xl border border-white/30 shadow-lg">
+                <div class="text-white font-bold text-xl mb-2 drop-shadow-md">Parent Orientation</div>
+                <div class="text-white font-medium">Monthly sessions for new parents</div>
             </div>
         </div>
         
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Choose the Right Program?</h2>
-            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">Contact us to schedule a visit and see our programs in action. We'll help you choose the best fit for your child.</p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="contact.html" class="bg-white text-emerald-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center justify-center">
-                    <span class="material-icons mr-2">calendar_today</span>
-                    Schedule a Visit
-                </a>
-                <a href="tel:+15551234567" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-all transform hover:scale-105 inline-flex items-center justify-center">
-                    <span class="material-icons mr-2">call</span>
-                    Call Now
-                </a>
-            </div>
-            
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
-                    <div class="text-white font-bold text-xl mb-2">Free Trial</div>
-                    <div class="text-white/80">1-day trial available for all programs</div>
+        <!-- Added contact info for better visibility -->
+        <!-- <div class="mt-12 pt-8 border-t border-white/20">
+            <div class="inline-flex flex-col sm:flex-row gap-6 items-center justify-center text-white">
+                <div class="flex items-center gap-2">
+                    <span class="material-icons">location_on</span>
+                    <span>123 Education St, Learning City</span>
                 </div>
-                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
-                    <div class="text-white font-bold text-xl mb-2">Open House</div>
-                    <div class="text-white/80">Every Saturday 10 AM - 12 PM</div>
+                <div class="flex items-center gap-2">
+                    <span class="material-icons">email</span>
+                    <span>info@preschool.com</span>
                 </div>
-                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
-                    <div class="text-white font-bold text-xl mb-2">Parent Orientation</div>
-                    <div class="text-white/80">Monthly sessions for new parents</div>
+                <div class="flex items-center gap-2">
+                    <span class="material-icons">phone</span>
+                    <span>(555) 123-4567</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </div> -->
+    </div>
+</section>
 
     <!-- Back to Top Button -->
     <button 
@@ -1085,7 +1094,7 @@
                         <li><a href="index.html" class="text-gray-300 hover:text-white">Home</a></li>
                         <li><a href="about.html" class="text-gray-300 hover:text-white">About Us</a></li>
                         <li><a href="programs.html" class="text-gray-300 hover:text-white">Programs</a></li>
-                        <li><a href="admissions.html" class="text-gray-300 hover:text-white">Admissions</a></li>
+                        <!-- <li><a href="admissions.html" class="text-gray-300 hover:text-white">Admissions</a></li> -->
                     </ul>
                 </div>
                 
@@ -1093,8 +1102,8 @@
                 <div>
                     <h4 class="text-lg font-bold mb-6">More Information</h4>
                     <ul class="space-y-3">
-                        <li><a href="infrastructure.html" class="text-gray-300 hover:text-white">Infrastructure</a></li>
-                        <li><a href="why-choose-us.html" class="text-gray-300 hover:text-white">Why Choose Us</a></li>
+                        <!-- <li><a href="infrastructure.html" class="text-gray-300 hover:text-white">Infrastructure</a></li>
+                        <li><a href="why-choose-us.html" class="text-gray-300 hover:text-white">Why Choose Us</a></li> -->
                         <li><a href="contact.html" class="text-gray-300 hover:text-white">Contact Us</a></li>
                         <li><a href="login.html" class="text-gray-300 hover:text-white">Login</a></li>
                     </ul>
@@ -1106,11 +1115,11 @@
                     <ul class="space-y-4">
                         <li class="flex items-center">
                             <span class="material-icons mr-3 text-indigo-400">location_on</span>
-                            <span class="text-gray-300">123 Education Street, Learning City</span>
+                            <span class="text-gray-300">123 SB Road, Pune</span>
                         </li>
                         <li class="flex items-center">
                             <span class="material-icons mr-3 text-indigo-400">phone</span>
-                            <span class="text-gray-300">+1 (555) 123-4567</span>
+                            <span class="text-gray-300">+91 9997776669 </span>
                         </li>
                         <li class="flex items-center">
                             <span class="material-icons mr-3 text-indigo-400">email</span>

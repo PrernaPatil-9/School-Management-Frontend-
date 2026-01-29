@@ -131,7 +131,7 @@
                         <!-- Main hero image with playful frame -->
                         <div
                             class="rounded-3xl overflow-hidden shadow-2xl border-8 border-white transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                            <img src="/assets/1.jfif" alt="Happy preschool children playing and learning together"
+                            <img src="/assets/banner.jfif" alt="Happy preschool children playing and learning together"
                                 class="w-full h-auto object-cover">
                         </div>
     
@@ -393,7 +393,7 @@
                 <div class="bg-white rounded-lg flex flex-col items-center overflow-hidden">
                     <div class="w-full aspect-square flex items-center justify-center bg-gray-50">
                         <img 
-                            src="https://media.giphy.com/media/3o6ZtaO9BZHcOjm3mM/giphy.gif" 
+                            src="https://media.giphy.com/media/1rRTuQjCh42xUEQyie/giphy.gif" 
                             alt="Happy preschool children animation" 
                             class="max-w-full max-h-full object-contain"
                             loading="lazy"
@@ -520,41 +520,45 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-<section class="relative py-16 text-black overflow-hidden">
+  <!-- CTA Section - SIMPLER VERSION -->
+<section class="relative py-20 text-white overflow-hidden">
 
-    <!-- Background Video -->
-    <video
-        class="absolute inset-0 w-full h-full object-cover"
-        autoplay
-        muted
-        loop
-        playsinline
-    >
-        <source src="assets/School1.mp4" type="video/mp4">
-    </video>
+    <!-- Background Video with CSS overlay -->
+    <div class="absolute inset-0">
+        <video
+            class="absolute inset-0 w-full h-full object-cover"
+            autoplay
+            muted
+            loop
+            playsinline
+            style="filter: brightness(0.7);"
+        >
+            <source src="assets/School1.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Simple overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-indigo-900/70 via-purple-900/50 to-indigo-900/70"></div>
+    </div>
 
-    <!-- Overlay to preserve original gradient look -->
-    <div class="absolute inset-0 bg-gradient-to-r from-indigo-600/80 to-purple-700/80"></div>
-
-    <div class="relative container mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold mb-6">Ready to Begin Your Child's Learning Journey?</h2>
-        <p class="text-xl mb-8 max-w-2xl mx-auto">
+    <div class="relative container mx-auto px-4 text-center z-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            Ready to Begin Your Child's Learning Journey?
+        </h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto text-white/90">
             Join the Little Wonders family and give your child the best start in their educational journey.
         </p>
 
-        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <a href="admissions.html"
-               class="bg-white text-indigo-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold text-lg transition">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <!-- <a href="admissions.html"
+               class="bg-white text-indigo-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg">
                 Enroll Now
-            </a>
+            </a> -->
             <a href="contact.html"
-               class="bg-transparent border-2 border-white hover:bg-white/10 px-8 py-3 rounded-lg font-semibold text-lg transition">
+               class="bg-transparent border-2 border-white hover:bg-white/10 px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105">
                 Schedule a Visit
             </a>
         </div>
     </div>
-
 </section>
 
     <!-- Back to Top Button -->
@@ -568,8 +572,8 @@
         <span class="material-icons">expand_less</span>
     </button>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
+        <!-- Footer -->
+   <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <!-- School Info -->
@@ -590,7 +594,7 @@
                         <li><a href="index.html" class="text-gray-300 hover:text-white">Home</a></li>
                         <li><a href="about.html" class="text-gray-300 hover:text-white">About Us</a></li>
                         <li><a href="programs.html" class="text-gray-300 hover:text-white">Programs</a></li>
-                        <li><a href="admissions.html" class="text-gray-300 hover:text-white">Admissions</a></li>
+                        <!-- <li><a href="admissions.html" class="text-gray-300 hover:text-white">Admissions</a></li> -->
                     </ul>
                 </div>
                 
@@ -598,8 +602,8 @@
                 <div>
                     <h4 class="text-lg font-bold mb-6">More Information</h4>
                     <ul class="space-y-3">
-                        <li><a href="infrastructure.html" class="text-gray-300 hover:text-white">Infrastructure</a></li>
-                        <li><a href="why-choose-us.html" class="text-gray-300 hover:text-white">Why Choose Us</a></li>
+                        <!-- <li><a href="infrastructure.html" class="text-gray-300 hover:text-white">Infrastructure</a></li>
+                        <li><a href="why-choose-us.html" class="text-gray-300 hover:text-white">Why Choose Us</a></li> -->
                         <li><a href="contact.html" class="text-gray-300 hover:text-white">Contact Us</a></li>
                         <li><a href="login.html" class="text-gray-300 hover:text-white">Login</a></li>
                     </ul>
@@ -611,11 +615,11 @@
                     <ul class="space-y-4">
                         <li class="flex items-center">
                             <span class="material-icons mr-3 text-indigo-400">location_on</span>
-                            <span class="text-gray-300">123 Education Street, Learning City</span>
+                            <span class="text-gray-300">123 SB Road, Pune</span>
                         </li>
                         <li class="flex items-center">
                             <span class="material-icons mr-3 text-indigo-400">phone</span>
-                            <span class="text-gray-300">+1 (555) 123-4567</span>
+                            <span class="text-gray-300">+91 9997776669 </span>
                         </li>
                         <li class="flex items-center">
                             <span class="material-icons mr-3 text-indigo-400">email</span>
