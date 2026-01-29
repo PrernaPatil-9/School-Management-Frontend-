@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Wonders School - Infrastructure</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Carousel CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+</head>
+<body class="font-sans">
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="bg-indigo-600 text-white p-2 rounded-lg mr-3">
+                        <span class="material-icons text-3xl">school</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800">Little Wonders <span class="text-indigo-600">Pre-School</span></h1>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-indigo-600 font-medium">About Us</a>
+                    <a href="programs.html" class="text-gray-700 hover:text-indigo-600 font-medium">Programs</a>
+                    <a href="admissions.html" class="text-gray-700 hover:text-indigo-600 font-medium">Admissions</a>
+                    <a href="infrastructure.html" class="text-indigo-600 font-medium">Infrastructure</a>
+                    <a href="why-choose-us.html" class="text-gray-700 hover:text-indigo-600 font-medium">Why Choose Us</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-indigo-600 font-medium">Contact</a>
+                    <a href="login.html" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">Login</a>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <span class="material-icons text-3xl">menu</span>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="md:hidden hidden mt-4 space-y-4">
+                <a href="index.html" class="block text-gray-700 hover:text-indigo-600">Home</a>
+                <a href="about.html" class="block text-gray-700 hover:text-indigo-600">About Us</a>
+                <a href="programs.html" class="block text-gray-700 hover:text-indigo-600">Programs</a>
+                <a href="admissions.html" class="block text-gray-700 hover:text-indigo-600">Admissions</a>
+                <a href="infrastructure.html" class="block text-indigo-600 font-medium">Infrastructure</a>
+                <a href="why-choose-us.html" class="block text-gray-700 hover:text-indigo-600">Why Choose Us</a>
+                <a href="contact.html" class="block text-gray-700 hover:text-indigo-600">Contact</a>
+                <a href="login.html" class="block bg-indigo-600 text-white px-4 py-2 rounded-lg text-center">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-r from-purple-500 to-pink-600 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Our Infrastructure</h1>
+            <p class="text-xl max-w-3xl mx-auto">A safe, stimulating, and child-friendly environment designed for optimal learning and development</p>
+        </div>
+    </section>
+
+    <!-- Gallery Navigation -->
+    <section class="py-8 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button data-filter="all" class="gallery-filter bg-white text-gray-700 px-6 py-3 rounded-lg shadow hover:shadow-md transition font-medium active">All Facilities</button>
+                <button data-filter="classrooms" class="gallery-filter bg-white text-gray-700 px-6 py-3 rounded-lg shadow hover:shadow-md transition font-medium">Classrooms</button>
+                <button data-filter="play" class="gallery-filter bg-white text-gray-700 px-6 py-3 rounded-lg shadow hover:shadow-md transition font-medium">Play Areas</button>
+                <button data-filter="activity" class="gallery-filter bg-white text-gray-700 px-6 py-3 rounded-lg shadow hover:shadow-md transition font-medium">Activity Rooms</button>
+                <button data-filter="safety" class="gallery-filter bg-white text-gray-700 px-6 py-3 rounded-lg shadow hover:shadow-md transition font-medium">Safety Facilities</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Carousel -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="swiper main-gallery-swiper rounded-2xl shadow-xl">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="relative h-96 md:h-[500px] bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="material-icons text-9xl text-indigo-300">school</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8 text-white">
+                                <h3 class="text-2xl font-bold mb-2">Modern Classrooms</h3>
+                                <p>Bright, spacious, and well-equipped learning spaces designed for young learners</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="relative h-96 md:h-[500px] bg-gradient-to-br from-emerald-100 to-green-100 rounded-2xl overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="material-icons text-9xl text-emerald-300">forest</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8 text-white">
+                                <h3 class="text-2xl font-bold mb-2">Outdoor Play Areas</h3>
+                                <p>Safe, age-appropriate outdoor spaces for physical development and fun</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="relative h-96 md:h-[500px] bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <span class="material-icons text-9xl text-amber-300">music_note</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8 text-white">
+                                <h3 class="text-2xl font-bold mb-2">Activity Rooms</h3>
+                                <p>Specialized rooms for music, art, dance, and other creative activities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Navigation buttons -->
+                <div class="swiper-button-next bg-white/30 backdrop-blur-sm rounded-full w-12 h-12"></div>
+                <div class="swiper-button-prev bg-white/30 backdrop-blur-sm rounded-full w-12 h-12"></div>
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classrooms Section -->
+    <section id="classrooms" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Smart Classrooms</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Designed for Learning & Comfort</h3>
+                    <p class="text-gray-600 mb-6">Our classrooms are thoughtfully designed to create an optimal learning environment for young children. Each classroom features:</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <span class="material-icons text-indigo-500 mr-3 mt-1">check_circle</span>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Age-Appropriate Furniture</h4>
+                                <p class="text-gray-600 text-sm">Ergonomically designed furniture sized perfectly for little learners</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <span class="material-icons text-indigo-500 mr-3 mt-1">check_circle</span>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Interactive Whiteboards</h4>
+                                <p class="text-gray-600 text-sm">Digital learning tools to make lessons engaging and interactive</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <span class="material-icons text-indigo-500 mr-3 mt-1">check_circle</span>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Learning Corners</h4>
+                                <p class="text-gray-600 text-sm">Reading corner, block area, pretend play zone, and art station</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <span class="material-icons text-indigo-500 mr-3 mt-1">check_circle</span>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Natural Lighting</h4>
+                                <p class="text-gray-600 text-sm">Ample natural light and ventilation for a healthy environment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl p-6 h-40 flex flex-col items-center justify-center">
+                            <span class="material-icons text-4xl text-indigo-600 mb-3">light</span>
+                            <span class="font-medium text-gray-800">Well-Lit</span>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-100 to-cyan-100 rounded-xl p-6 h-40 flex flex-col items-center justify-center">
+                            <span class="material-icons text-4xl text-blue-600 mb-3">ac_unit</span>
+                            <span class="font-medium text-gray-800">Air Conditioned</span>
+                        </div>
+                        <div class="bg-gradient-to-br from-green-100 to-emerald-100 rounded-xl p-6 h-40 flex flex-col items-center justify-center">
+                            <span class="material-icons text-4xl text-green-600 mb-3">clean_hands</span>
+                            <span class="font-medium text-gray-800">Hygienic</span>
+                        </div>
+                        <div class="bg-gradient-to-br from-amber-100 to-yellow-100 rounded-xl p-6 h-40 flex flex-col items-center justify-center">
+                            <span class="material-icons text-4xl text-amber-600 mb-3">camera_indoor</span>
+                            <span class="font-medium text-gray-800">CCTV Monitored</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Play Areas Section -->
+    <section id="play" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Play & Recreational Areas</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Indoor Play -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-pink-100 to-red-100 flex items-center justify-center">
+                        <span class="material-icons text-6xl text-pink-600">child_friendly</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Indoor Play Zone</h3>
+                        <p class="text-gray-600 mb-4">Soft play area with padded floors, ball pits, climbing structures, and educational toys for safe indoor play.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <span class="material-icons text-pink-500 text-sm mr-2">circle</span>
+                                <span class="text-sm">Soft play equipment</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="material-icons text-pink-500 text-sm mr-2">circle</span>
+                                <span class="text-sm">Building blocks zone</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="material-icons text-pink-500 text-sm mr-2">circle</span>
+                                <span class="text-sm">Pretend play kitchen</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Outdoor Play -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-emerald-100 to-green-100 flex items-center justify-center">
+                        <span class="material-icons text-6xl text-emerald-600">park</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Outdoor Playground</h3>
+                        <p class="text-gray-600 mb-4">Age-appropriate outdoor equipment including swings, slides, sand pit, and water play area for physical development.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <span class="material-icons text-emerald-500 text-sm mr-2">circle</span>
+                                <span class="text-sm">Safe play equipment</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="material-icons text-emerald-500 text-sm mr-2">circle</span>
+                                <span class="text-sm">Shaded play areas</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="material-icons text-emerald-500 text-sm mr-2">circle</span>
+                                <span class="text-sm">Synthetic grass surface</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Splash Pool -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-blue-100 to-cyan-100 flex items-center justify-center">
+                        <span class="material-icons text-6xl text-blue-600">pool</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Splash Pool</h3>
+                        <p class="text-gray-600 mb-4">Shallow, temperature-controlled splash pool for water play under strict supervision during summer months.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <span class="material-icons text-blue-500 text-sm mr-2">circle</span>
+                                <span class="text-sm">Temperature controlled</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="material-icons text-blue-500 text-sm mr-2">circle</span>
+                                <span class="text-sm">Constant supervision</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="material-icons text-blue-500 text-sm mr-2">circle</span>
+                                <span class="text-sm">Safety floatation devices</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activity Rooms Section -->
+    <section id="activity" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Special Activity Rooms</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Music Room -->
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl text-center hover-card">
+                    <div class="text-purple-600 mb-4">
+                        <span class="material-icons text-5xl">music_note</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Music Room</h3>
+                    <p class="text-gray-600">Equipped with child-friendly musical instruments for rhythm and melody exploration.</p>
+                </div>
+                
+                <!-- Art Studio -->
+                <div class="bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-xl text-center hover-card">
+                    <div class="text-amber-600 mb-4">
+                        <span class="material-icons text-5xl">palette</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Art Studio</h3>
+                    <p class="text-gray-600">Creative space with easels, pottery wheel, and various art materials for artistic expression.</p>
+                </div>
+                
+                <!-- Dance Room -->
+                <div class="bg-gradient-to-br from-red-50 to-pink-50 p-6 rounded-xl text-center hover-card">
+                    <div class="text-red-600 mb-4">
+                        <span class="material-icons text-5xl">directions_run</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Dance Room</h3>
+                    <p class="text-gray-600">Mirrored walls and sprung floors for ballet, creative movement, and dance classes.</p>
+                </div>
+                
+                <!-- Library -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl text-center hover-card">
+                    <div class="text-blue-600 mb-4">
+                        <span class="material-icons text-5xl">menu_book</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Library</h3>
+                    <p class="text-gray-600">Extensive collection of age-appropriate books in a cozy reading nook environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Facilities Section -->
+    <section id="safety" class="py-16 bg-gradient-to-r from-emerald-600 to-green-700 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Safety & Security</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl text-center">
+                    <div class="mb-4">
+                        <span class="material-icons text-4xl">camera_enhance</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">CCTV Surveillance</h3>
+                    <p>24/7 CCTV monitoring across all areas with restricted parent access to footage.</p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl text-center">
+                    <div class="mb-4">
+                        <span class="material-icons text-4xl">security</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Trained Security Staff</h3>
+                    <p>Background-verified security personnel at all entry/exit points.</p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl text-center">
+                    <div class="mb-4">
+                        <span class="material-icons text-4xl">medical_services</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Medical Room</h3>
+                    <p>Fully equipped medical room with trained nurse and pediatrician on call.</p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl text-center">
+                    <div class="mb-4">
+                        <span class="material-icons text-4xl">fire_extinguisher</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Fire Safety</h3>
+                    <p>Regular fire drills, smoke detectors, and fire extinguishers throughout campus.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4">Pick-up & Drop-off System</h3>
+                    <p>Strict child pick-up policy with ID verification. Only authorized individuals can pick up children. Digital attendance system with real-time notifications to parents.</p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4">Hygiene & Sanitation</h3>
+                    <p>Regular sanitization of all areas. Child-friendly washrooms with sensor taps. Air purifiers in all rooms. Daily health check-ups for all children.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">See Our Campus in Person</h2>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">The best way to experience our infrastructure is to visit us. Schedule a campus tour today.</p>
+            <a href="contact.html" class="bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition inline-block">Schedule a Campus Tour</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-600 p-2 rounded-lg mr-3">
+                            <span class="material-icons">school</span>
+                        </div>
+                        <h3 class="text-xl font-bold">Little Wonders</h3>
+                    </div>
+                    <p class="text-gray-300">Providing quality early childhood education since 2010.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white">About Us</a></li>
+                        <li><a href="programs.html" class="text-gray-300 hover:text-white">Programs</a></li>
+                        <li><a href="admissions.html" class="text-gray-300 hover:text-white">Admissions</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">More Information</h4>
+                    <ul class="space-y-3">
+                        <li><a href="infrastructure.html" class="text-gray-300 hover:text-white">Infrastructure</a></li>
+                        <li><a href="why-choose-us.html" class="text-gray-300 hover:text-white">Why Choose Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white">Contact Us</a></li>
+                        <li><a href="login.html" class="text-gray-300 hover:text-white">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <span class="material-icons mr-3 text-indigo-400">location_on</span>
+                            <span class="text-gray-300">123 Education Street</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-icons mr-3 text-indigo-400">phone</span>
+                            <span class="text-gray-300">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-icons mr-3 text-indigo-400">email</span>
+                            <span class="text-gray-300">info@littlewonders.edu</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Little Wonders Pre-School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carousel JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize Swiper Carousel
+        document.addEventListener('DOMContentLoaded', function() {
+            const swiper = new Swiper('.main-gallery-swiper', {
+                direction: 'horizontal',
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+            
+            // Gallery Filter Functionality
+            const filterButtons = document.querySelectorAll('.gallery-filter');
+            const sections = document.querySelectorAll('section[id]');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active', 'bg-indigo-600', 'text-white'));
+                    filterButtons.forEach(btn => btn.classList.add('bg-white', 'text-gray-700'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active', 'bg-indigo-600', 'text-white');
+                    this.classList.remove('bg-white', 'text-gray-700');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Show/hide sections
+                    sections.forEach(section => {
+                        if (filter === 'all' || section.id === filter) {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

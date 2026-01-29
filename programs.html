@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Wonders School - Programs</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-indigo: #4f46e5;
+            --primary-emerald: #10b981;
+            --primary-amber: #f59e0b;
+            --primary-pink: #ec4899;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .font-comic {
+            font-family: 'Comic Neue', cursive;
+        }
+        
+        /* Custom Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: 200px 0; }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .shimmer-bg {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200px 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .program-nav-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .program-nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-indigo);
+            transition: width 0.3s ease;
+        }
+        
+        .program-nav-item:hover::after {
+            width: 100%;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary-indigo), var(--primary-emerald));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .age-badge {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .age-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .age-badge:hover::before {
+            left: 100%;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-indigo);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background-color: #e5e7eb;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        /* Parallax Effect */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        /* Loading animation for cards */
+        .card-load {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .card-loaded {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="bg-indigo-600 text-white p-2 rounded-lg mr-3 transform transition-transform hover:scale-110">
+                        <span class="material-icons text-3xl">school</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800">Little Wonders</h1>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">About Us</a>
+                    <a href="programs.html" class="text-indigo-600 font-medium border-b-2 border-indigo-600">Programs</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Contact</a>
+                    <a href="login.html" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-all transform hover:scale-105 shadow-md hover:shadow-lg">Login</a>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                    <span class="material-icons text-3xl">menu</span>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="md:hidden hidden mt-4 space-y-4 animate__animated animate__fadeIn">
+                <a href="index.html" class="block text-gray-700 hover:text-indigo-600 transition-colors">Home</a>
+                <a href="about.html" class="block text-gray-700 hover:text-indigo-600 transition-colors">About Us</a>
+                <a href="programs.html" class="block text-indigo-600 font-medium">Programs</a>
+                <a href="contact.html" class="block text-gray-700 hover:text-indigo-600 transition-colors">Contact</a>
+                <a href="login.html" class="block bg-indigo-600 text-white px-4 py-2 rounded-lg text-center transform hover:scale-105 transition-transform">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Banner with Parallax -->
+    <section class="relative overflow-hidden py-20 text-black">
+    <!-- Background Video -->
+    <video
+        src="assets/School1.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        class="absolute inset-0 w-full h-full object-cover"
+    ></video>
+
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/60 to-green-600/60"></div>
+
+    <!-- Strong Dark Overlay -->
+    <div class="absolute inset-0 bg-black/60"></div>
+
+    <!-- Extra Vignette Effect -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/70"></div>
+
+    <!-- Animated background elements -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-white/10 float-animation"></div>
+        <div class="absolute top-1/4 right-20 w-16 h-16 rounded-full bg-white/10 float-animation" style="animation-delay: 0.5s;"></div>
+        <div class="absolute bottom-20 left-1/4 w-24 h-24 rounded-full bg-white/10 float-animation" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-10 right-10 w-12 h-12 rounded-full bg-white/10 float-animation" style="animation-delay: 1.5s;"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto px-4 text-center relative z-10">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in-up text-black">
+            Our Programs & Curriculum
+        </h1>
+
+        <p
+            class="text-xl md:text-2xl max-w-3xl mx-auto mb-8 fade-in-up text-white/90"
+            style="animation-delay: 0.2s;"
+        >
+            Age-appropriate learning programs designed to foster holistic development
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mt-12">
+            <div class="bg-white/15 backdrop-blur-sm p-6 rounded-xl fade-in-up text-black" style="animation-delay: 0.4s;">
+                <div class="text-3xl font-bold mb-2">4</div>
+                <div class="text-sm">Age Groups</div>
+            </div>
+
+            <div class="bg-white/15 backdrop-blur-sm p-6 rounded-xl fade-in-up text-black" style="animation-delay: 0.5s;">
+                <div class="text-3xl font-bold mb-2">50+</div>
+                <div class="text-sm">Activities Monthly</div>
+            </div>
+
+            <div class="bg-white/15 backdrop-blur-sm p-6 rounded-xl fade-in-up text-black" style="animation-delay: 0.6s;">
+                <div class="text-3xl font-bold mb-2">10+</div>
+                <div class="text-sm">Learning Methods</div>
+            </div>
+
+            <div class="bg-white/15 backdrop-blur-sm p-6 rounded-xl fade-in-up text-black" style="animation-delay: 0.7s;">
+                <div class="text-3xl font-bold mb-2">100%</div>
+                <div class="text-sm">Satisfaction Rate</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Programs Navigation -->
+    <section class="py-5 bg-white sticky top-16 z-40 shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#playgroup" class="program-nav-item bg-white text-gray-700 px-6 py-3 rounded-lg shadow hover:shadow-md transition font-medium flex items-center">
+                    <span class="material-icons mr-2 text-indigo-500">toys</span>
+                    Playgroup
+                </a>
+                <a href="#nursery" class="program-nav-item bg-white text-gray-700 px-6 py-3 rounded-lg shadow hover:shadow-md transition font-medium flex items-center">
+                    <span class="material-icons mr-2 text-emerald-500">nature</span>
+                    Nursery
+                </a>
+                <a href="#lkg" class="program-nav-item bg-white text-gray-700 px-6 py-3 rounded-lg shadow hover:shadow-md transition font-medium flex items-center">
+                    <span class="material-icons mr-2 text-amber-500">brush</span>
+                    LKG
+                </a>
+                <a href="#ukg" class="program-nav-item bg-white text-gray-700 px-6 py-3 rounded-lg shadow hover:shadow-md transition font-medium flex items-center">
+                    <span class="material-icons mr-2 text-pink-500">auto_stories</span>
+                    UKG
+                </a>
+                <!-- <a href="#methods" class="program-nav-item bg-white text-gray-700 px-6 py-3 rounded-lg shadow hover:shadow-md transition font-medium flex items-center">
+                    <span class="material-icons mr-2 text-purple-500">psychology</span>
+                    Learning Methods
+                </a> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Playgroup Program -->
+    <section id="playgroup" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-2/5">
+                    <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl p-8 shadow-xl card-hover relative overflow-hidden">
+                        <!-- Floating elements -->
+                        <div class="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-indigo-200/50"></div>
+                        <div class="absolute -bottom-6 -left-6 w-32 h-32 rounded-full bg-purple-200/50"></div>
+                        
+                        <div class="text-center mb-6 relative z-10">
+                            <div class="inline-block p-4 rounded-full bg-white shadow-md">
+                                <span class="material-icons text-6xl text-indigo-600">toys</span>
+                            </div>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center relative z-10">Playgroup</h2>
+                        <div class="text-center mb-6 relative z-10">
+                            <span class="inline-block age-badge bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full font-medium shadow-sm">Age: 2-3 Years</span>
+                        </div>
+                        <div class="space-y-4 relative z-10">
+                            <div class="flex items-start transform transition-transform hover:translate-x-2">
+                                <span class="material-icons text-indigo-500 mr-3 mt-1">check_circle</span>
+                                <span>Sensory play activities</span>
+                            </div>
+                            <div class="flex items-start transform transition-transform hover:translate-x-2" style="transition-delay: 0.1s;">
+                                <span class="material-icons text-indigo-500 mr-3 mt-1">check_circle</span>
+                                <span>Basic social skills development</span>
+                            </div>
+                            <div class="flex items-start transform transition-transform hover:translate-x-2" style="transition-delay: 0.2s;">
+                                <span class="material-icons text-indigo-500 mr-3 mt-1">check_circle</span>
+                                <span>Fine motor skills through play</span>
+                            </div>
+                            <div class="flex items-start transform transition-transform hover:translate-x-2" style="transition-delay: 0.3s;">
+                                <span class="material-icons text-indigo-500 mr-3 mt-1">check_circle</span>
+                                <span>Language exposure through songs</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Stats at bottom -->
+                        <div class="mt-8 pt-6 border-t border-indigo-200 relative z-10">
+                            <div class="flex justify-between text-center">
+                                <div>
+                                    <div class="text-xl font-bold text-indigo-700">3:1</div>
+                                    <div class="text-sm text-gray-600">Student-Teacher Ratio</div>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-indigo-700">2.5h</div>
+                                    <div class="text-sm text-gray-600">Daily Duration</div>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-indigo-700">5</div>
+                                    <div class="text-sm text-gray-600">Days/Week</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-3/5 card-load" id="playgroup-content">
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Developing First Social Bonds</h3>
+                    <p class="text-gray-600 mb-6 text-lg">Our Playgroup program is designed to gently introduce toddlers to the school environment while focusing on their social, emotional, and physical development.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-indigo-50 p-6 rounded-xl card-hover">
+                            <h4 class="font-bold text-gray-800 mb-3 text-lg flex items-center">
+                                <span class="material-icons text-indigo-600 mr-2">target</span>
+                                Key Focus Areas
+                            </h4>
+                            <ul class="space-y-3 text-gray-600">
+                                <li class="flex items-start">
+                                    <span class="material-icons text-indigo-500 text-sm mr-2 mt-1">check</span>
+                                    <span>Separation adjustment</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-indigo-500 text-sm mr-2 mt-1">check</span>
+                                    <span>Following simple instructions</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-indigo-500 text-sm mr-2 mt-1">check</span>
+                                    <span>Sharing and taking turns</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-indigo-500 text-sm mr-2 mt-1">check</span>
+                                    <span>Emotional expression</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-6 rounded-xl card-hover">
+                            <h4 class="font-bold text-gray-800 mb-3 text-lg flex items-center">
+                                <span class="material-icons text-purple-600 mr-2">schedule</span>
+                                Daily Activities
+                            </h4>
+                            <ul class="space-y-3 text-gray-600">
+                                <li class="flex items-start">
+                                    <span class="material-icons text-purple-500 text-sm mr-2 mt-1">music_note</span>
+                                    <span>Story time and rhymes</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-purple-500 text-sm mr-2 mt-1">palette</span>
+                                    <span>Art and craft sessions</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-purple-500 text-sm mr-2 mt-1">park</span>
+                                    <span>Outdoor play and exploration</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-purple-500 text-sm mr-2 mt-1">tag_faces</span>
+                                    <span>Sensory activities</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline -->
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="font-bold text-gray-800 mb-4 text-lg">Daily Schedule</h4>
+                        <div class="timeline-item">
+                            <div class="font-medium text-gray-800">9:00 AM - Arrival & Free Play</div>
+                            <div class="text-gray-600 text-sm">Children settle in with supervised play</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="font-medium text-gray-800">9:30 AM - Circle Time</div>
+                            <div class="text-gray-600 text-sm">Songs, stories, and introduction to the day</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="font-medium text-gray-800">10:00 AM - Activity Time</div>
+                            <div class="text-gray-600 text-sm">Themed learning activities</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="font-medium text-gray-800">11:00 AM - Outdoor Play</div>
+                            <div class="text-gray-600 text-sm">Gross motor skills development</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="font-medium text-gray-800">11:30 AM - Departure</div>
+                            <div class="text-gray-600 text-sm">Goodbye songs and preparation for home</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nursery Program -->
+    <section id="nursery" class="py-20 bg-gradient-to-br from-emerald-50 to-green-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+                <div class="lg:w-2/5">
+                    <div class="bg-gradient-to-br from-emerald-100 to-green-100 rounded-2xl p-8 shadow-xl card-hover relative overflow-hidden">
+                        <!-- Floating elements -->
+                        <div class="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-emerald-200/50"></div>
+                        <div class="absolute -bottom-6 -left-6 w-32 h-32 rounded-full bg-green-200/50"></div>
+                        
+                        <div class="text-center mb-6 relative z-10">
+                            <div class="inline-block p-4 rounded-full bg-white shadow-md">
+                                <span class="material-icons text-6xl text-emerald-600">nature</span>
+                            </div>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center relative z-10">Nursery</h2>
+                        <div class="text-center mb-6 relative z-10">
+                            <span class="inline-block age-badge bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full font-medium shadow-sm">Age: 3-4 Years</span>
+                        </div>
+                        <div class="space-y-4 relative z-10">
+                            <div class="flex items-start transform transition-transform hover:translate-x-2">
+                                <span class="material-icons text-emerald-500 mr-3 mt-1">check_circle</span>
+                                <span>Introduction to alphabet and numbers</span>
+                            </div>
+                            <div class="flex items-start transform transition-transform hover:translate-x-2" style="transition-delay: 0.1s;">
+                                <span class="material-icons text-emerald-500 mr-3 mt-1">check_circle</span>
+                                <span>Enhanced language development</span>
+                            </div>
+                            <div class="flex items-start transform transition-transform hover:translate-x-2" style="transition-delay: 0.2s;">
+                                <span class="material-icons text-emerald-500 mr-3 mt-1">check_circle</span>
+                                <span>Creative expression activities</span>
+                            </div>
+                            <div class="flex items-start transform transition-transform hover:translate-x-2" style="transition-delay: 0.3s;">
+                                <span class="material-icons text-emerald-500 mr-3 mt-1">check_circle</span>
+                                <span>Problem-solving through play</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Stats at bottom -->
+                        <div class="mt-8 pt-6 border-t border-emerald-200 relative z-10">
+                            <div class="flex justify-between text-center">
+                                <div>
+                                    <div class="text-xl font-bold text-emerald-700">5:1</div>
+                                    <div class="text-sm text-gray-600">Student-Teacher Ratio</div>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-emerald-700">3h</div>
+                                    <div class="text-sm text-gray-600">Daily Duration</div>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-emerald-700">5</div>
+                                    <div class="text-sm text-gray-600">Days/Week</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-3/5 card-load" id="nursery-content">
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Building Foundational Skills</h3>
+                    <p class="text-gray-600 mb-6 text-lg">The Nursery program introduces structured learning while maintaining play as the primary mode of education, focusing on cognitive and language development.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-emerald-50 p-6 rounded-xl card-hover">
+                            <h4 class="font-bold text-gray-800 mb-3 text-lg flex items-center">
+                                <span class="material-icons text-emerald-600 mr-2">flag</span>
+                                Learning Objectives
+                            </h4>
+                            <ul class="space-y-3 text-gray-600">
+                                <li class="flex items-start">
+                                    <span class="material-icons text-emerald-500 text-sm mr-2 mt-1">check</span>
+                                    <span>Recognize letters A-Z</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-emerald-500 text-sm mr-2 mt-1">check</span>
+                                    <span>Count numbers 1-20</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-emerald-500 text-sm mr-2 mt-1">check</span>
+                                    <span>Follow two-step instructions</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-emerald-500 text-sm mr-2 mt-1">check</span>
+                                    <span>Identify basic shapes and colors</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 p-6 rounded-xl card-hover">
+                            <h4 class="font-bold text-gray-800 mb-3 text-lg flex items-center">
+                                <span class="material-icons text-green-600 mr-2">trending_up</span>
+                                Skill Development
+                            </h4>
+                            <ul class="space-y-3 text-gray-600">
+                                <li class="flex items-start">
+                                    <span class="material-icons text-green-500 text-sm mr-2 mt-1">edit</span>
+                                    <span>Early writing skills</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-green-500 text-sm mr-2 mt-1">record_voice_over</span>
+                                    <span>Phonics and pronunciation</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-green-500 text-sm mr-2 mt-1">lightbulb</span>
+                                    <span>Creative thinking and imagination</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="material-icons text-green-500 text-sm mr-2 mt-1">people</span>
+                                    <span>Group collaboration</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress bars -->
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="font-bold text-gray-800 mb-4 text-lg">Skill Development Focus</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium text-gray-700">Language & Communication</span>
+                                    <span class="font-medium text-emerald-600">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-emerald-600 h-2.5 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium text-gray-700">Cognitive Development</span>
+                                    <span class="font-medium text-emerald-600">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-emerald-600 h-2.5 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium text-gray-700">Social Skills</span>
+                                    <span class="font-medium text-emerald-600">80%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-emerald-600 h-2.5 rounded-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium text-gray-700">Physical Development</span>
+                                    <span class="font-medium text-emerald-600">75%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                    <div class="bg-emerald-600 h-2.5 rounded-full" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LKG Program -->
+    <section id="lkg" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-2/5">
+                    <div class="bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl p-8 shadow-xl card-hover relative overflow-hidden">
+                        <!-- Floating elements -->
+                        <div class="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-amber-200/50"></div>
+                        <div class="absolute -bottom-6 -left-6 w-32 h-32 rounded-full bg-orange-200/50"></div>
+                        
+                        <div class="text-center mb-6 relative z-10">
+                            <div class="inline-block p-4 rounded-full bg-white shadow-md">
+                                <span class="material-icons text-6xl text-amber-600">brush</span>
+                            </div>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center relative z-10">LKG</h2>
+                        <div class="text-center mb-6 relative z-10">
+                            <span class="inline-block age-badge bg-amber-100 text-amber-800 px-4 py-2 rounded-full font-medium shadow-sm">Age: 4-5 Years</span>
+                        </div>
+                        <div class="space-y-4 relative z-10">
+                            <div class="flex items-start transform transition-transform hover:translate-x-2">
+                                <span class="material-icons text-amber-500 mr-3 mt-1">check_circle</span>
+                                <span>Pre-reading and pre-writing skills</span>
+                            </div>
+                            <div class="flex items-start transform transition-transform hover:translate-x-2" style="transition-delay: 0.1s;">
+                                <span class="material-icons text-amber-500 mr-3 mt-1">check_circle</span>
+                                <span>Basic mathematical concepts</span>
+                            </div>
+                            <div class="flex items-start transform transition-transform hover:translate-x-2" style="transition-delay: 0.2s;">
+                                <span class="material-icons text-amber-500 mr-3 mt-1">check_circle</span>
+                                <span>Science and nature exploration</span>
+                            </div>
+                            <div class="flex items-start transform transition-transform hover:translate-x-2" style="transition-delay: 0.3s;">
+                                <span class="material-icons text-amber-500 mr-3 mt-1">check_circle</span>
+                                <span>Social studies introduction</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Stats at bottom -->
+                        <div class="mt-8 pt-6 border-t border-amber-200 relative z-10">
+                            <div class="flex justify-between text-center">
+                                <div>
+                                    <div class="text-xl font-bold text-amber-700">8:1</div>
+                                    <div class="text-sm text-gray-600">Student-Teacher Ratio</div>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-amber-700">4h</div>
+                                    <div class="text-sm text-gray-600">Daily Duration</div>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-amber-700">5</div>
+                                    <div class="text-sm text-gray-600">Days/Week</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-3/5 card-load" id="lkg-content">
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Preparing for Formal Education</h3>
+                    <p class="text-gray-600 mb-6 text-lg">Our LKG program bridges early childhood education with primary school preparation, focusing on academic readiness while maintaining creative expression.</p>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                            <span class="material-icons text-amber-600 mr-2">star</span>
+                            Curriculum Highlights
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-amber-50 p-6 rounded-xl card-hover text-center transform transition-all hover:scale-105">
+                                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-amber-100 mb-4">
+                                    <span class="material-icons text-amber-600 text-3xl">menu_book</span>
+                                </div>
+                                <div class="text-amber-700 font-bold text-xl mb-3">Language</div>
+                                <div class="text-gray-600">Phonics, simple sentences, storytelling, vocabulary building</div>
+                            </div>
+                            <div class="bg-orange-50 p-6 rounded-xl card-hover text-center transform transition-all hover:scale-105">
+                                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-orange-100 mb-4">
+                                    <span class="material-icons text-orange-600 text-3xl">calculate</span>
+                                </div>
+                                <div class="text-orange-700 font-bold text-xl mb-3">Mathematics</div>
+                                <div class="text-gray-600">Numbers 1-100, basic operations, patterns, measurements</div>
+                            </div>
+                            <div class="bg-yellow-50 p-6 rounded-xl card-hover text-center transform transition-all hover:scale-105">
+                                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-yellow-100 mb-4">
+                                    <span class="material-icons text-yellow-600 text-3xl">eco</span>
+                                </div>
+                                <div class="text-yellow-700 font-bold text-xl mb-3">Environmental Science</div>
+                                <div class="text-gray-600">Plants, animals, seasons, community helpers, our body</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Skills Matrix -->
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="font-bold text-gray-800 mb-4 text-lg">Learning Outcomes Matrix</h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left text-gray-600">
+                                <thead class="text-xs text-gray-700 uppercase bg-amber-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3">Subject Area</th>
+                                        <th scope="col" class="px-6 py-3">Skills Developed</th>
+                                        <th scope="col" class="px-6 py-3">Activities</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white border-b hover:bg-amber-50">
+                                        <td class="px-6 py-4 font-medium text-gray-900">Language Arts</td>
+                                        <td class="px-6 py-4">Reading readiness, phonics, writing formation</td>
+                                        <td class="px-6 py-4">Letter tracing, story sequencing, show & tell</td>
+                                    </tr>
+                                    <tr class="bg-white border-b hover:bg-amber-50">
+                                        <td class="px-6 py-4 font-medium text-gray-900">Mathematics</td>
+                                        <td class="px-6 py-4">Number recognition, counting, basic operations</td>
+                                        <td class="px-6 py-4">Counting games, pattern blocks, measurement activities</td>
+                                    </tr>
+                                    <tr class="bg-white hover:bg-amber-50">
+                                        <td class="px-6 py-4 font-medium text-gray-900">General Awareness</td>
+                                        <td class="px-6 py-4">Understanding of environment, health, safety</td>
+                                        <td class="px-6 py-4">Nature walks, safety drills, health habits</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UKG Program -->
+    <section id="ukg" class="py-20 bg-gradient-to-br from-pink-50 to-red-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+                <div class="lg:w-2/5">
+                    <div class="bg-gradient-to-br from-pink-100 to-red-100 rounded-2xl p-8 shadow-xl card-hover relative overflow-hidden">
+                        <!-- Floating elements -->
+                        <div class="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-pink-200/50"></div>
+                        <div class="absolute -bottom-6 -left-6 w-32 h-32 rounded-full bg-red-200/50"></div>
+                        
+                        <div class="text-center mb-6 relative z-10">
+                            <div class="inline-block p-4 rounded-full bg-white shadow-md">
+                                <span class="material-icons text-6xl text-pink-600">auto_stories</span>
+                            </div>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center relative z-10">UKG</h2>
+                        <div class="text-center mb-6 relative z-10">
+                            <span class="inline-block age-badge bg-pink-100 text-pink-800 px-4 py-2 rounded-full font-medium shadow-sm">Age: 5-6 Years</span>
+                        </div>
+                        <div class="space-y-4 relative z-10">
+                            <div class="flex items-start transform transition-transform hover:translate-x-2">
+                                <span class="material-icons text-pink-500 mr-3 mt-1">check_circle</span>
+                                <span>Advanced reading and writing</span>
+                            </div>
+                            <div class="flex items-start transform transition-transform hover:translate-x-2" style="transition-delay: 0.1s;">
+                                <span class="material-icons text-pink-500 mr-3 mt-1">check_circle</span>
+                                <span>Mathematical problem solving</span>
+                            </div>
+                            <div class="flex items-start transform transition-transform hover:translate-x-2" style="transition-delay: 0.2s;">
+                                <span class="material-icons text-pink-500 mr-3 mt-1">check_circle</span>
+                                <span>Computer literacy basics</span>
+                            </div>
+                            <div class="flex items-start transform transition-transform hover:translate-x-2" style="transition-delay: 0.3s;">
+                                <span class="material-icons text-pink-500 mr-3 mt-1">check_circle</span>
+                                <span>Critical thinking development</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Stats at bottom -->
+                        <div class="mt-8 pt-6 border-t border-pink-200 relative z-10">
+                            <div class="flex justify-between text-center">
+                                <div>
+                                    <div class="text-xl font-bold text-pink-700">10:1</div>
+                                    <div class="text-sm text-gray-600">Student-Teacher Ratio</div>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-pink-700">5h</div>
+                                    <div class="text-sm text-gray-600">Daily Duration</div>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-pink-700">5</div>
+                                    <div class="text-sm text-gray-600">Days/Week</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-3/5 card-load" id="ukg-content">
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">School Readiness Program</h3>
+                    <p class="text-gray-600 mb-6 text-lg">Our UKG program ensures children are fully prepared for primary school with strong academic foundations, study skills, and emotional maturity.</p>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                            <span class="material-icons text-pink-600 mr-2">workspace_premium</span>
+                            Learning Outcomes
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-6">
+                                <div class="flex items-start bg-white p-5 rounded-xl shadow-sm card-hover">
+                                    <div class="bg-pink-100 text-pink-800 rounded-full p-3 mr-4">
+                                        <span class="material-icons">menu_book</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-gray-800 text-lg mb-2">Reading Skills</h5>
+                                        <p class="text-gray-600">Read simple stories independently with comprehension, identify main ideas, and make predictions.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start bg-white p-5 rounded-xl shadow-sm card-hover">
+                                    <div class="bg-red-100 text-red-800 rounded-full p-3 mr-4">
+                                        <span class="material-icons">calculate</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-gray-800 text-lg mb-2">Math Proficiency</h5>
+                                        <p class="text-gray-600">Addition, subtraction, basic multiplication concepts, simple word problems, and measurement.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-6">
+                                <div class="flex items-start bg-white p-5 rounded-xl shadow-sm card-hover">
+                                    <div class="bg-purple-100 text-purple-800 rounded-full p-3 mr-4">
+                                        <span class="material-icons">computer</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-gray-800 text-lg mb-2">Digital Literacy</h5>
+                                        <p class="text-gray-600">Basic computer skills, educational software usage, keyboard familiarity, and internet safety.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start bg-white p-5 rounded-xl shadow-sm card-hover">
+                                    <div class="bg-indigo-100 text-indigo-800 rounded-full p-3 mr-4">
+                                        <span class="material-icons">groups</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-gray-800 text-lg mb-2">Social Skills</h5>
+                                        <p class="text-gray-600">Teamwork, leadership, conflict resolution, public speaking, and emotional regulation.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Comparison table -->
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h4 class="font-bold text-gray-800 mb-4 text-lg">UKG vs Primary School Readiness</h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left text-gray-600">
+                                <thead class="text-xs text-gray-700 uppercase bg-pink-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3">Area</th>
+                                        <th scope="col" class="px-6 py-3">UKG Focus</th>
+                                        <th scope="col" class="px-6 py-3">Primary School Ready</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white border-b hover:bg-pink-50">
+                                        <td class="px-6 py-4 font-medium text-gray-900">Academic Skills</td>
+                                        <td class="px-6 py-4">Foundational literacy & numeracy</td>
+                                        <td class="px-6 py-4">Independent reading & problem solving</td>
+                                    </tr>
+                                    <tr class="bg-white border-b hover:bg-pink-50">
+                                        <td class="px-6 py-4 font-medium text-gray-900">Study Habits</td>
+                                        <td class="px-6 py-4">Following instructions, completing tasks</td>
+                                        <td class="px-6 py-4">Time management, organization, homework</td>
+                                    </tr>
+                                    <tr class="bg-white hover:bg-pink-50">
+                                        <td class="px-6 py-4 font-medium text-gray-900">Social-Emotional</td>
+                                        <td class="px-6 py-4">Making friends, sharing, expressing emotions</td>
+                                        <td class="px-6 py-4">Conflict resolution, empathy, leadership</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Methods Banner -->
+    <!-- <section id="methods" class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">
+        <div class="absolute inset-0" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=20'); background-size: cover; opacity: 0.1;"></div>
+
+        <div class="absolute top-10 left-10 w-64 h-64 rounded-full bg-white/5 float-animation"></div>
+        <div class="absolute bottom-20 right-20 w-96 h-96 rounded-full bg-white/5 float-animation" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 left-1/3 w-48 h-48 rounded-full bg-white/5 float-animation" style="animation-delay: 2s;"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-white">Our Learning Methods</h2>
+        <p class="text-xl text-center mb-12 text-white/80 max-w-3xl mx-auto">
+            We employ innovative, research-based teaching methodologies that cater to different learning styles
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl card-hover border border-white/20">
+                <div class="text-center mb-6">
+                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20">
+                        <span class="material-icons text-4xl text-white">sports_handball</span>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-center mb-4 text-white">Play-Based Learning</h3>
+                <p class="text-center text-white/80">
+                    Educational concepts are introduced through structured and free play activities that make learning enjoyable and natural.
+                </p>
+                <div class="mt-6 pt-6 border-t border-white/20">
+                    <div class="flex items-center justify-center text-sm">
+                        <span class="material-icons text-white/70 mr-1 text-sm">schedule</span>
+                        <span class="text-white/70">30% of daily activities</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl card-hover border border-white/20">
+                <div class="text-center mb-6">
+                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20">
+                        <span class="material-icons text-4xl text-white">handyman</span>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-center mb-4 text-white">Hands-On Activities</h3>
+                <p class="text-center text-white/80">
+                    Children learn by doing - through experiments, art projects, building blocks, and sensory activities that engage all senses.
+                </p>
+                <div class="mt-6 pt-6 border-t border-white/20">
+                    <div class="flex items-center justify-center text-sm">
+                        <span class="material-icons text-white/70 mr-1 text-sm">schedule</span>
+                        <span class="text-white/70">40% of daily activities</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl card-hover border border-white/20">
+                <div class="text-center mb-6">
+                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/20">
+                        <span class="material-icons text-4xl text-white">groups</span>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-center mb-4 text-white">Collaborative Learning</h3>
+                <p class="text-center text-white/80">
+                    Group activities and projects teach children teamwork, communication, and problem-solving skills while building social bonds.
+                </p>
+                <div class="mt-6 pt-6 border-t border-white/20">
+                    <div class="flex items-center justify-center text-sm">
+                        <span class="material-icons text-white/70 mr-1 text-sm">schedule</span>
+                        <span class="text-white/70">30% of daily activities</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
+                <h3 class="text-xl font-bold mb-4 text-white flex items-center">
+                    <span class="material-icons mr-3">school</span>
+                    Montessori Approach
+                </h3>
+                <p class="text-white/80 mb-4">
+                    We incorporate Montessori principles of child-led learning, where children choose activities based on their interests, promoting independence and self-motivation.
+                </p>
+                <div class="grid grid-cols-2 gap-4 mt-6">
+                    <div class="flex items-center">
+                        <span class="material-icons text-white/70 text-sm mr-2">check</span>
+                        <span class="text-white/70 text-sm">Prepared Environment</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="material-icons text-white/70 text-sm mr-2">check</span>
+                        <span class="text-white/70 text-sm">Mixed Age Groups</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="material-icons text-white/70 text-sm mr-2">check</span>
+                        <span class="text-white/70 text-sm">Self-Correction</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="material-icons text-white/70 text-sm mr-2">check</span>
+                        <span class="text-white/70 text-sm">Practical Life Skills</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
+                <h3 class="text-xl font-bold mb-4 text-white flex items-center">
+                    <span class="material-icons mr-3">psychology</span>
+                    Multiple Intelligence Theory
+                </h3>
+                <p class="text-white/80 mb-4">
+                    Our curriculum addresses different types of intelligence - linguistic, logical, spatial, musical, bodily-kinesthetic, interpersonal, intrapersonal, and naturalist.
+                </p>
+                <div class="grid grid-cols-2 gap-4 mt-6">
+                    <div class="flex items-center">
+                        <span class="material-icons text-white/70 text-sm mr-2">emoji_objects</span>
+                        <span class="text-white/70 text-sm">Linguistic</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="material-icons text-white/70 text-sm mr-2">calculate</span>
+                        <span class="text-white/70 text-sm">Logical</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="material-icons text-white/70 text-sm mr-2">palette</span>
+                        <span class="text-white/70 text-sm">Spatial</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="material-icons text-white/70 text-sm mr-2">music_note</span>
+                        <span class="text-white/70 text-sm">Musical</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+    <!-- CTA Banner -->
+    <section class="py-20 relative overflow-hidden">
+        <!-- Background with gradient -->
+        <div class="absolute inset-0 bg-gradient-to-r from-emerald-500 to-green-600">
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
+                <div class="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-white/10"></div>
+                <div class="absolute top-1/2 -right-20 w-80 h-80 rounded-full bg-white/10"></div>
+                <div class="absolute -bottom-20 left-1/3 w-96 h-96 rounded-full bg-white/10"></div>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Choose the Right Program?</h2>
+            <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">Contact us to schedule a visit and see our programs in action. We'll help you choose the best fit for your child.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" class="bg-white text-emerald-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center justify-center">
+                    <span class="material-icons mr-2">calendar_today</span>
+                    Schedule a Visit
+                </a>
+                <a href="tel:+15551234567" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-all transform hover:scale-105 inline-flex items-center justify-center">
+                    <span class="material-icons mr-2">call</span>
+                    Call Now
+                </a>
+            </div>
+            
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+                    <div class="text-white font-bold text-xl mb-2">Free Trial</div>
+                    <div class="text-white/80">1-day trial available for all programs</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+                    <div class="text-white font-bold text-xl mb-2">Open House</div>
+                    <div class="text-white/80">Every Saturday 10 AM - 12 PM</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+                    <div class="text-white font-bold text-xl mb-2">Parent Orientation</div>
+                    <div class="text-white/80">Monthly sessions for new parents</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button 
+        id="backToTop"
+        class="fixed bottom-8 right-8 z-50 hidden w-14 h-14 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white 
+               flex items-center justify-center shadow-xl hover:shadow-2xl 
+               transition-all duration-300 transform hover:scale-110"
+        aria-label="Back to top"
+    >
+        <span class="material-icons">expand_less</span>
+    </button>
+
+    <!-- Footer -->
+   <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- School Info -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-600 p-2 rounded-lg mr-3">
+                            <span class="material-icons">school</span>
+                        </div>
+                        <h3 class="text-xl font-bold">Little Wonders</h3>
+                    </div>
+                    <p class="text-gray-300">Providing quality early childhood education since 2010. Nurturing young minds with care, creativity, and innovation.</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white">About Us</a></li>
+                        <li><a href="programs.html" class="text-gray-300 hover:text-white">Programs</a></li>
+                        <li><a href="admissions.html" class="text-gray-300 hover:text-white">Admissions</a></li>
+                    </ul>
+                </div>
+                
+                <!-- More Links -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">More Information</h4>
+                    <ul class="space-y-3">
+                        <li><a href="infrastructure.html" class="text-gray-300 hover:text-white">Infrastructure</a></li>
+                        <li><a href="why-choose-us.html" class="text-gray-300 hover:text-white">Why Choose Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white">Contact Us</a></li>
+                        <li><a href="login.html" class="text-gray-300 hover:text-white">Login</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <span class="material-icons mr-3 text-indigo-400">location_on</span>
+                            <span class="text-gray-300">123 Education Street, Learning City</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-icons mr-3 text-indigo-400">phone</span>
+                            <span class="text-gray-300">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-icons mr-3 text-indigo-400">email</span>
+                            <span class="text-gray-300">info@littlewonders.edu</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 Little Wonders. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Back to top button
+        const backToTopBtn = document.getElementById("backToTop");
+        
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove("hidden");
+            } else {
+                backToTopBtn.classList.add("hidden");
+            }
+        });
+        
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+        
+        // Program navigation smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('card-loaded');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all card-load elements
+        document.querySelectorAll('.card-load').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Add active state to navigation based on scroll position
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.program-nav-item');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('bg-indigo-100', 'text-indigo-700');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('bg-indigo-100', 'text-indigo-700');
+                }
+            });
+        });
+        
+        // Initialize with first section active
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+</html>

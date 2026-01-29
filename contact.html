@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Wonders – Let's Connect</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent: #f472b6;
+            --playful: #fde047;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #f8fafc, #e0f2fe);
+        }
+        .comic-title {
+            font-family: 'Comic Neue', cursive;
+        }
+        .orbit {
+            animation: orbit 18s linear infinite;
+        }
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+            to   { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+        }
+        .particle {
+            position: absolute;
+            background: rgba(99,102,241,0.4);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 12s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%,100% { transform: translateY(0) scale(1); opacity: 0.6; }
+            50%     { transform: translateY(-40px) scale(1.3); opacity: 0.9; }
+        }
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .tile:hover {
+            transform: scale(1.06) rotate(1deg);
+            box-shadow: 0 25px 50px -12px rgba(99,102,241,0.4);
+        }
+
+         @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(5deg); }
+            66% { transform: translateY(-10px) rotate(-5deg); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+
+ <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="bg-indigo-600 text-white p-2 rounded-lg mr-3 transform transition-transform hover:scale-110">
+                        <span class="material-icons text-3xl">school</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800">Little Wonders</h1>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">About Us</a>
+                    <a href="programs.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Programs</a>
+                    <a href="contact.html" class="text-indigo-600 font-medium border-b-2 border-indigo-600">Contact</a>
+                    <a href="login.html" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-all transform hover:scale-105 shadow-md hover:shadow-lg">Login</a>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                    <span class="material-icons text-3xl">menu</span>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="md:hidden hidden mt-4 space-y-4 animate__animated animate__fadeIn">
+                <a href="index.html" class="block text-gray-700 hover:text-indigo-600 transition-colors">Home</a>
+                <a href="about.html" class="block text-gray-700 hover:text-indigo-600 transition-colors">About Us</a>
+                <a href="programs.html" class="block text-gray-700 hover:text-indigo-600 transition-colors">Programs</a>
+                <a href="contact.html" class="block text-indigo-600 font-medium">Contact</a>
+                <a href="login.html" class="block bg-indigo-600 text-white px-4 py-2 rounded-lg text-center transform hover:scale-105 transition-transform">Login</a>
+            </div>
+        </nav>
+    </header>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<header class="relative min-h-[55vh] flex items-center justify-center py-5 overflow-hidden bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+    <!-- Floating particles -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="particle w-4 h-4 top-10 left-20" style="animation-delay:0s;"></div>
+        <div class="particle w-6 h-6 top-40 right-32" style="animation-delay:2s;"></div>
+        <div class="particle w-5 h-5 bottom-20 left-1/3" style="animation-delay:4s;"></div>
+        <div class="particle w-3 h-3 top-1/2 right-20" style="animation-delay:6s;"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-6 max-w-5xl">
+        <h1 class="text-3xl md:text-5xl font-bold text-indigo-900 comic-title animate__animated animate__fadeInDown">
+            Hey there, Little Wonder!
+        </h1>
+        <p class="mt-6 text-xl md:text-1xl text-indigo-700 font-light max-w-3xl mx-auto">
+            We’re excited you’re here. Whether it’s a hello, a question, or your child’s next big adventure — let’s talk 💙
+        </p>
+
+        <div class="mt-12 flex flex-wrap justify-center gap-6 mb-6">
+    <a href="#form" class="bg-indigo-600 text-white px-10 py-5 rounded-full text-lg font-semibold hover:bg-indigo-700 transform hover:scale-105 transition shadow-xl">
+        Send us a message →
+    </a>
+    <a href="#quick" class="bg-white text-indigo-700 border-2 border-indigo-600 px-10 py-5 rounded-full text-lg font-semibold hover:bg-indigo-50 transform hover:scale-105 transition shadow-xl">
+        Quick ways to reach us
+    </a>
+</div>
+
+    </div>
+
+    <!-- Floating school icons orbit -->
+    <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 hidden md:block">
+        <div class="relative w-64 h-64">
+            <span class="material-icons text-5xl text-indigo-500 absolute orbit" style="top:0;left:50%;margin-left:-1.5rem;">school</span>
+            <span class="material-icons text-5xl text-pink-500 absolute orbit" style="animation-delay:-4.5s;">favorite</span>
+            <span class="material-icons text-5xl text-yellow-500 absolute orbit" style="animation-delay:-9s;">auto_stories</span>
+            <span class="material-icons text-5xl text-emerald-500 absolute orbit" style="animation-delay:-13.5s;">park</span>
+        </div>
+    </div>
+</header>
+
+<!-- ─── QUICK CONTACT HUB ─────────────────────────────────── -->
+<section id="quick" class="py-5 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12 reveal-on-scroll">
+            Choose how you'd like to connect
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <!-- Call Us Card -->
+            <div class="bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded-2xl text-center hover:shadow-2xl transition hover:-translate-y-2 reveal-on-scroll">
+                <div class="w-16 h-16 mx-auto bg-indigo-100 rounded-full flex items-center justify-center mb-4">
+                    <span class="material-icons text-4xl text-indigo-600">phone</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Call Us</h3>
+                <p class="text-gray-600 mb-3 text-sm">Admissions: +91 98765 43210<br>General: +91 87654 32109</p>
+                <a href="tel:+919876543210" class="text-indigo-600 font-semibold hover:underline text-sm">Call now →</a>
+            </div>
+
+            <!-- Email Card -->
+            <div class="bg-gradient-to-br from-pink-50 to-rose-50 p-6 rounded-2xl text-center hover:shadow-2xl transition hover:-translate-y-2 reveal-on-scroll" style="transition-delay:0.1s">
+                <div class="w-16 h-16 mx-auto bg-pink-100 rounded-full flex items-center justify-center mb-4">
+                    <span class="material-icons text-4xl text-pink-600">email</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Email</h3>
+                <p class="text-gray-600 mb-3 text-sm">hello@littlewonders.edu<br>admissions@littlewonders.edu</p>
+                <a href="mailto:hello@littlewonders.edu" class="text-pink-600 font-semibold hover:underline text-sm">Write us →</a>
+            </div>
+
+            <!-- Visit Us Card -->
+            <div class="bg-gradient-to-br from-yellow-50 to-amber-50 p-6 rounded-2xl text-center hover:shadow-2xl transition hover:-translate-y-2 reveal-on-scroll" style="transition-delay:0.2s">
+                <div class="w-16 h-16 mx-auto bg-yellow-100 rounded-full flex items-center justify-center mb-4">
+                    <span class="material-icons text-4xl text-yellow-600">directions_car</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Visit Us</h3>
+                <p class="text-gray-600 mb-3 text-sm">Near Zopadi Canteen,<br>Ahilyanagar, Maharashtra</p>
+                <a href="#map" class="text-yellow-600 font-semibold hover:underline text-sm">Get directions →</a>
+            </div>
+
+            <!-- Social Media Card (Replaces Live Chat) -->
+            <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-2xl text-center hover:shadow-2xl transition hover:-translate-y-2 reveal-on-scroll" style="transition-delay:0.3s">
+                <div class="w-16 h-16 mx-auto bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                    <span class="material-icons text-4xl text-purple-600">share</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Social Media</h3>
+                <p class="text-gray-600 mb-3 text-sm">Follow us on Instagram, Facebook, and YouTube for updates, news, and fun activities.</p>
+                <div class="flex justify-center gap-3">
+                    <a href="https://instagram.com" target="_blank" class="text-pink-500 hover:text-pink-600 text-sm font-semibold">Instagram</a>
+                    <a href="https://facebook.com" target="_blank" class="text-blue-600 hover:text-blue-700 text-sm font-semibold">Facebook</a>
+                    <a href="https://youtube.com" target="_blank" class="text-red-600 hover:text-red-700 text-sm font-semibold">YouTube</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ─── MODERN CONTACT & MAP SECTION ────────────────────────── -->
+<section id="contact-map" class="py-16 md:py-20 bg-gradient-to-b from-white to-indigo-50 relative overflow-hidden">
+    <!-- Background decorative elements -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-indigo-100/30 to-purple-100/30 rounded-full -translate-y-48 translate-x-48"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-amber-100/20 to-yellow-100/20 rounded-full translate-y-32 -translate-x-32"></div>
+    
+    <!-- Animated floating elements -->
+    <div class="absolute top-1/4 left-10 w-6 h-6 bg-indigo-300/20 rounded-full animate-float"></div>
+    <div class="absolute top-1/2 right-20 w-4 h-4 bg-amber-300/20 rounded-full animate-float" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-1/3 left-1/4 w-5 h-5 bg-purple-300/20 rounded-full animate-float" style="animation-delay: 2s;"></div>
+
+    <div class="container mx-auto px-4 md:px-6 relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-12 md:mb-16 reveal-on-scroll">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-indigo-100 to-white rounded-2xl shadow-lg mb-6">
+                <span class="material-icons text-4xl bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">contact_mail</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Get in Touch</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">We're here to help you with any questions about our programs or admissions</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
+            <!-- Contact Form Card -->
+            <div class="reveal-on-scroll">
+                <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 hover:shadow-2xl transition-shadow duration-500">
+                    <div class="flex items-center mb-8">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-md">
+                                <span class="material-icons text-white">email</span>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-800">Send Message</h3>
+                            <p class="text-gray-500 text-sm">We respond within 24 hours</p>
+                        </div>
+                    </div>
+
+                    <form class="space-y-5">
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div class="group">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                                <div class="relative">
+                                    <span class="material-icons absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg group-focus-within:text-indigo-500">person</span>
+                                    <input type="text" 
+                                           class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition-all text-gray-700 placeholder-gray-400"
+                                           placeholder="John Doe">
+                                </div>
+                            </div>
+                            
+                            <div class="group">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                <div class="relative">
+                                    <span class="material-icons absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg group-focus-within:text-indigo-500">phone</span>
+                                    <input type="tel" 
+                                           class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition-all text-gray-700 placeholder-gray-400"
+                                           placeholder="+1 (555) 123-4567">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="group">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <div class="relative">
+                                <span class="material-icons absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg group-focus-within:text-indigo-500">email</span>
+                                <input type="email" 
+                                       class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition-all text-gray-700 placeholder-gray-400"
+                                       placeholder="hello@example.com">
+                            </div>
+                        </div>
+                        
+                        <div class="group">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Child's Age (Optional)</label>
+                            <div class="relative">
+                                <span class="material-icons absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg group-focus-within:text-indigo-500">child_care</span>
+                                <select class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition-all text-gray-700 appearance-none">
+                                    <option value="">Select age group</option>
+                                    <option value="2-3">2-3 years (Playgroup)</option>
+                                    <option value="3-4">3-4 years (Nursery)</option>
+                                    <option value="4-5">4-5 years (LKG)</option>
+                                    <option value="5-6">5-6 years (UKG)</option>
+                                </select>
+                                <span class="material-icons absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg">arrow_drop_down</span>
+                            </div>
+                        </div>
+                        
+                        <div class="group">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Your Message</label>
+                            <div class="relative">
+                                <span class="material-icons absolute left-4 top-4 text-gray-400 text-lg group-focus-within:text-indigo-500">message</span>
+                                <textarea rows="3" 
+                                          class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition-all text-gray-700 placeholder-gray-400 resize-none"
+                                          placeholder="Tell us about your inquiry..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-4 rounded-xl font-bold text-sm md:text-base hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center group">
+                            <span>Send Message</span>
+                            <span class="material-icons ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </button>
+                    </form>
+                    
+                    <!-- Alternative Contact -->
+                    <div class="mt-8 pt-6 border-t border-gray-100 text-center">
+                        <p class="text-gray-500 text-sm mb-2">Prefer to call? We're available:</p>
+                        <a href="tel:+15551234567" class="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium group">
+                            <span class="material-icons mr-2 text-lg">call</span>
+                            <span>+1 (555) 123-4567</span>
+                            <span class="material-icons ml-2 text-lg group-hover:animate-pulse">phone_forwarded</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Map Card -->
+            <div class="reveal-on-scroll" style="transition-delay: 0.2s;">
+                <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 hover:shadow-2xl transition-shadow duration-500">
+                    <!-- Map Header -->
+                    <div class="flex items-center mb-8">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center shadow-md">
+                                <span class="material-icons text-white">place</span>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-800">Visit Our Campus</h3>
+                            <p class="text-gray-500 text-sm">123 Education Street, Learning City</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Interactive Map -->
+                    <div class="relative h-64 md:h-72 mb-6 rounded-xl overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 border border-gray-100">
+                        <!-- Map Background -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-100/30 to-indigo-100/30">
+                            <!-- Grid Pattern -->
+                            <div class="absolute inset-0 opacity-20">
+                                <div class="grid grid-cols-6 grid-rows-6 gap-4 h-full w-full">
+                                    <div class="border border-indigo-200/50 rounded"></div>
+                                    <div class="border border-indigo-200/50 rounded"></div>
+                                    <div class="border border-indigo-200/50 rounded"></div>
+                                    <div class="border border-indigo-200/50 rounded col-span-3"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Road Patterns -->
+                            <div class="absolute top-1/2 left-4 right-4 h-1 bg-gray-300/50 rounded-full"></div>
+                            <div class="absolute top-1/3 left-1/4 w-1 h-12 bg-gray-300/50 rounded-full"></div>
+                            <div class="absolute bottom-1/4 right-1/3 w-1 h-16 bg-gray-300/50 rounded-full"></div>
+                        </div>
+                        
+                        <!-- Location Pins -->
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <!-- Main School Pin -->
+                            <div class="relative group cursor-pointer" onclick="openDirections()">
+                                <div class="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full flex items-center justify-center shadow-xl transform hover:scale-110 transition-transform duration-300">
+                                    <span class="material-icons text-white">school</span>
+                                </div>
+                                <div class="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-white p-3 rounded-lg shadow-2xl w-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                                    <div class="font-bold text-gray-800 text-sm">Little Wonders School</div>
+                                    <div class="text-gray-600 text-xs mt-1">Main Campus • Click for directions</div>
+                                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white rotate-45"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Park Pin -->
+                        <div class="absolute top-1/3 left-1/4 cursor-pointer group" onclick="showParkInfo()">
+                            <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
+                                <span class="material-icons text-white text-sm">park</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Parking Pin -->
+                        <div class="absolute bottom-1/4 right-1/3 cursor-pointer group" onclick="showParkingInfo()">
+                            <div class="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
+                                <span class="material-icons text-white text-sm">local_parking</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Map Legend -->
+                        <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-md border border-gray-100">
+                            <div class="text-xs font-medium text-gray-700 mb-2">Legend</div>
+                            <div class="space-y-1">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 mr-2"></div>
+                                    <span class="text-xs text-gray-600">School</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 mr-2"></div>
+                                    <span class="text-xs text-gray-600">Park</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 mr-2"></div>
+                                    <span class="text-xs text-gray-600">Parking</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Controls & Info -->
+                    <div class="space-y-6">
+                        <!-- Transportation Info -->
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="bg-blue-50 p-3 rounded-lg text-center group hover:bg-blue-100 transition-colors">
+                                <span class="material-icons text-blue-600 text-lg mb-1">train</span>
+                                <div class="text-xs text-gray-700">Metro</div>
+                                <div class="text-sm font-bold text-gray-800">5 min walk</div>
+                            </div>
+                            <div class="bg-emerald-50 p-3 rounded-lg text-center group hover:bg-emerald-100 transition-colors">
+                                <span class="material-icons text-emerald-600 text-lg mb-1">directions_bus</span>
+                                <div class="text-xs text-gray-700">Bus Stop</div>
+                                <div class="text-sm font-bold text-gray-800">3 min walk</div>
+                            </div>
+                            <div class="bg-amber-50 p-3 rounded-lg text-center group hover:bg-amber-100 transition-colors">
+                                <span class="material-icons text-amber-600 text-lg mb-1">local_parking</span>
+                                <div class="text-xs text-gray-700">Parking</div>
+                                <div class="text-sm font-bold text-gray-800">Available</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <button onclick="openDirections()" 
+                                    class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-3 rounded-xl font-medium text-sm hover:shadow-lg transition-all flex items-center justify-center group">
+                                <span class="material-icons mr-2 text-lg">directions</span>
+                                <span>Get Directions</span>
+                            </button>
+                            <button onclick="openVirtualTour()" 
+                                    class="flex-1 bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white py-3 rounded-xl font-medium text-sm hover:shadow-lg transition-all flex items-center justify-center group">
+                                <span class="material-icons mr-2 text-lg">360</span>
+                                <span>Virtual Tour</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Hours Info -->
+                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                            <div class="flex items-center mb-2">
+                                <span class="material-icons text-gray-500 mr-2 text-sm">schedule</span>
+                                <div class="text-sm font-medium text-gray-700">Visiting Hours</div>
+                            </div>
+                            <div class="text-xs text-gray-600 grid grid-cols-2 gap-1">
+                                <div>Mon-Fri:</div>
+                                <div class="text-right">8:00 AM - 6:00 PM</div>
+                                <div>Saturday:</div>
+                                <div class="text-right">9:00 AM - 1:00 PM</div>
+                                <div>Sunday:</div>
+                                <div class="text-right">By appointment</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Additional Contact Methods -->
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 reveal-on-scroll" style="transition-delay: 0.3s;">
+            <div class="bg-white p-5 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center mr-3">
+                        <span class="material-icons text-blue-600">chat</span>
+                    </div>
+                    <div>
+                        <div class="font-bold text-gray-800">Live Chat</div>
+                        <div class="text-xs text-gray-500">Available now</div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-3">Chat with our admissions team in real-time</p>
+                <button onclick="openChat()" class="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
+                    Start Chat <span class="material-icons ml-1 text-sm">arrow_forward</span>
+                </button>
+            </div>
+            
+            <div class="bg-white p-5 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center mr-3">
+                        <span class="material-icons text-green-600">calendar_today</span>
+                    </div>
+                    <div>
+                        <div class="font-bold text-gray-800">Book Tour</div>
+                        <div class="text-xs text-gray-500">Schedule visit</div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-3">Schedule a personal campus tour</p>
+                <button onclick="openTourBooking()" class="text-green-600 hover:text-green-700 text-sm font-medium flex items-center">
+                    Book Now <span class="material-icons ml-1 text-sm">arrow_forward</span>
+                </button>
+            </div>
+            
+            <div class="bg-white p-5 rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg flex items-center justify-center mr-3">
+                        <span class="material-icons text-purple-600">download</span>
+                    </div>
+                    <div>
+                        <div class="font-bold text-gray-800">Brochure</div>
+                        <div class="text-xs text-gray-500">Get info packet</div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-600 mb-3">Download our school brochure and fee structure</p>
+                <button onclick="downloadBrochure()" class="text-purple-600 hover:text-purple-700 text-sm font-medium flex items-center">
+                    Download <span class="material-icons ml-1 text-sm">arrow_forward</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── MINI MAP + DIRECTIONS ─────────────────────────────── -->
+<section id="map" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-12 reveal-on-scroll">Come say Hi!</h2>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="reveal-on-scroll">
+                <div class="bg-gray-100 h-96 rounded-3xl overflow-hidden shadow-2xl">
+                    <!-- You can later replace with real Google Maps iframe -->
+                    <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-cyan-100">
+                        <div class="text-center">
+                            <span class="material-icons text-9xl text-blue-600 mb-4">pin_drop</span>
+                            <p class="text-2xl font-bold">Little Wonders School</p>
+                            <p class="text-gray-700">Ahilyanagar, Maharashtra</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-8 reveal-on-scroll" style="transition-delay:0.2s">
+                <div class="flex items-start">
+                    <div class="bg-indigo-100 p-4 rounded-full mr-6">
+                        <span class="material-icons text-indigo-600">directions_car</span>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">By Car</h4>
+                        <p class="text-gray-600">15 mins from Savedi, 20 mins from MIDC. Ample parking inside campus.</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-green-100 p-4 rounded-full mr-6">
+                        <span class="material-icons text-green-600">directions_bus</span>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">By Bus / Auto</h4>
+                        <p class="text-gray-600">Frequent autos from Bus Stand & Railway Station. Ask for Zopadi / Pipeline Road.</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-purple-100 p-4 rounded-full mr-6">
+                        <span class="material-icons text-purple-600">directions_walk</span>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">Walking</h4>
+                        <p class="text-gray-600">Very close to several residential societies and hostels.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Back to Top Button -->
+    <button 
+        id="backToTop"
+        class="fixed bottom-8 right-8 z-50 hidden w-14 h-14 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white 
+               flex items-center justify-center shadow-xl hover:shadow-2xl 
+               transition-all duration-300 transform hover:scale-110"
+        aria-label="Back to top"
+    >
+        <span class="material-icons">expand_less</span>
+    </button>
+
+<!-- ─── PLAYFUL FOOTER ────────────────────────────────────── -->
+<footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- School Info -->
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-600 p-2 rounded-lg mr-3">
+                            <span class="material-icons">school</span>
+                        </div>
+                        <h3 class="text-xl font-bold">Little Wonders</h3>
+                    </div>
+                    <p class="text-gray-300">Providing quality early childhood education since 2010. Nurturing young minds with care, creativity, and innovation.</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white">About Us</a></li>
+                        <li><a href="programs.html" class="text-gray-300 hover:text-white">Programs</a></li>
+                        <li><a href="admissions.html" class="text-gray-300 hover:text-white">Admissions</a></li>
+                    </ul>
+                </div>
+                
+                <!-- More Links -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">More Information</h4>
+                    <ul class="space-y-3">
+                        <li><a href="infrastructure.html" class="text-gray-300 hover:text-white">Infrastructure</a></li>
+                        <li><a href="why-choose-us.html" class="text-gray-300 hover:text-white">Why Choose Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white">Contact Us</a></li>
+                        <li><a href="login.html" class="text-gray-300 hover:text-white">Login</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <span class="material-icons mr-3 text-indigo-400">location_on</span>
+                            <span class="text-gray-300">123 Education Street, Learning City</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-icons mr-3 text-indigo-400">phone</span>
+                            <span class="text-gray-300">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-icons mr-3 text-indigo-400">email</span>
+                            <span class="text-gray-300">info@littlewonders.edu</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 Little Wonders. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+<script>
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal-on-scroll');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Simple form alert (demo)
+    document.querySelector('form').addEventListener('submit', e => {
+        e.preventDefault();
+        alert("Yay! We received your message. Our team will get back to you soon ✨");
+    });
+
+  const backToTopBtn = document.getElementById("backToTop");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.remove("hidden");
+    } else {
+      backToTopBtn.classList.add("hidden");
+    }
+  });
+
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+
+   // Map interaction functions
+        function openDirections() {
+            window.open('https://maps.google.com/?q=123+Education+Street+Learning+City', '_blank');
+        }
+        
+        function showParkInfo() {
+            alert('Central Park is located adjacent to our campus. Perfect for outdoor activities!');
+        }
+        
+        function showParkingInfo() {
+            alert('Visitor parking is available on-site. Please check-in at reception for a parking pass.');
+        }
+        
+        function openVirtualTour() {
+            alert('Virtual tour would open in a new window. In a real implementation, this would show a 360° tour of our campus.');
+        }
+        
+        function openChat() {
+            alert('Live chat window would open. Our team is available 8AM-6PM on weekdays.');
+        }
+        
+        function openTourBooking() {
+            alert('Tour booking calendar would appear. You can schedule a visit for any weekday.');
+        }
+        
+        function downloadBrochure() {
+            alert('Brochure download would start. It includes program details, fee structure, and campus photos.');
+        }
+        
+        // Form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Show success message
+                    const button = form.querySelector('button[type="submit"]');
+                    const originalText = button.innerHTML;
+                    
+                    button.innerHTML = '<span class="material-icons animate-spin mr-2">refresh</span> Sending...';
+                    button.disabled = true;
+                    
+                    setTimeout(() => {
+                        button.innerHTML = '<span class="material-icons mr-2">check_circle</span> Message Sent!';
+                        button.classList.remove('from-indigo-600', 'to-purple-600');
+                        button.classList.add('from-green-500', 'to-emerald-500');
+                        
+                        // Reset form
+                        setTimeout(() => {
+                            form.reset();
+                            button.innerHTML = originalText;
+                            button.disabled = false;
+                            button.classList.remove('from-green-500', 'to-emerald-500');
+                            button.classList.add('from-indigo-600', 'to-purple-600');
+                        }, 2000);
+                    }, 1500);
+                });
+            }
+        });
+</script>
+
+</body>
+</html>

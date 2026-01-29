@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Wonders School - About Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+    <style>
+.journey-section {
+  background: #f9fcff;
+  padding: 30px 20px 30px; /* reduced top & bottom */
+}
+
+.journey-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-side {
+  text-align: left;
+}
+
+.about-title {
+  font-size: 2.8rem;
+  color: #1e88e5;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+
+.about-text {
+  font-size: 1.18rem;
+  line-height: 1.7;
+  color: #424242;
+  margin-bottom: 20px;
+}
+
+.journey-side {
+  position: relative;
+}
+
+.journey-title {
+  font-size: 2.8rem;
+  color: #1e88e5;
+  margin-bottom: 40px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.timeline-wrapper {
+  position: relative;
+  height: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.milestone.center-milestone {
+  position: relative;
+  width: 220px;
+  height: 320px;
+  background: linear-gradient(135deg, #ffffff 0%, #fff3e0 100%);
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 2;
+}
+
+.year-box {
+  font-size: 5rem;
+  font-weight: 900;
+  color: #1976d2;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.roots-text {
+  font-size: 1.35rem;
+  color: #424242;
+  text-align: center;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.bee {
+  position: absolute;
+  top: 80px;
+  left: 15%;
+  width: 70px;
+  height: 70px;
+  z-index: 4;
+  animation: float 7s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translate(0, 0) rotate(0deg); }
+  50%     { transform: translate(30px, -25px) rotate(15deg); }
+}
+
+.radial-lines {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  transform: translate(-38%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 380px;
+  height: 3px;
+  background: #1976d2;
+  transform-origin: left center;
+  transform: translateX(-50%) translateY(-50%) rotate(var(--angle));
+  opacity: 0.75;
+  animation: grow 1.8s ease-out forwards var(--delay);
+}
+
+.ray::after {
+  content: var(--year);
+  position: absolute;
+  right: -64px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #1976d2;
+  white-space: nowrap;
+}
+
+@keyframes grow {
+  from { width: 0; opacity: 0; }
+  to   { width: 380px; opacity: 0.75; }
+}
+
+@media (max-width: 900px) {
+  .journey-content {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .about-side {
+    text-align: center;
+  }
+
+  .about-title {
+    font-size: 2.4rem;
+  }
+
+  .timeline-wrapper {
+    height: 480px;
+  }
+
+  .radial-lines {
+    width: 640px;
+    height: 640px;
+    transform: translate(-40%, -50%);
+  }
+
+  .ray {
+    width: 300px;
+  }
+
+  .ray::after {
+    font-size: 1.6rem;
+    right: -54px;
+  }
+}
+
+html, body {
+  overflow-x: hidden !important;
+}
+
+
+@keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    .animate-scroll {
+        animation: scroll 35s linear infinite; /* Adjust 35s → faster/slower */
+        width: max-content; /* Important for the duplicated content trick */
+    }
+
+    .award-carousel-wrapper {
+        max-width: 100%;
+    }
+
+    /* Optional: make it pause on hover (already handled via JS inline) */
+    .award-carousel:hover {
+        animation-play-state: paused;
+    }
+
+    /* Keep your existing scrollbar hide if needed */
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>
+</head>
+<body class="font-sans">
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="bg-indigo-600 text-white p-2 rounded-lg mr-3 transform transition-transform hover:scale-110">
+                        <span class="material-icons text-3xl">school</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800">Little Wonders</h1>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Home</a>
+                    <a href="about.html" class="text-indigo-600 font-medium border-b-2 border-indigo-600">About Us</a>
+                    <a href="programs.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Programs</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Contact</a>
+                    <a href="login.html" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-all transform hover:scale-105 shadow-md hover:shadow-lg">Login</a>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                    <span class="material-icons text-3xl">menu</span>
+                </button>
+            </div>
+            
+            <div id="mobile-menu" class="md:hidden hidden mt-4 space-y-4 animate__animated animate__fadeIn">
+                <a href="index.html" class="block text-gray-700 hover:text-indigo-600 transition-colors">Home</a>
+                <a href="about.html" class="block text-indigo-600 font-medium">About Us</a>
+                <a href="programs.html" class="block text-gray-700 hover:text-indigo-600 transition-colors">Programs</a>
+                <a href="contact.html" class="block text-gray-700 hover:text-indigo-600 transition-colors">Contact</a>
+                <a href="login.html" class="block bg-indigo-600 text-white px-4 py-2 rounded-lg text-center transform hover:scale-105 transition-transform">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">About Little Wonders</h1>
+            <p class="text-xl max-w-3xl mx-auto">Nurturing young minds with love, creativity, and excellence since 2010</p>
+        </div>
+    </section>
+
+    <!-- Our Journy -->
+    <section class="journey-section">
+  <div class="journey-content">
+    <!-- Left: About Us text -->
+    <div class="about-side">
+      <h2 class="about-title">About Roots to Wings</h2>
+      <p class="about-text">
+        Welcome to <strong>Roots to Wings</strong> — a nurturing preschool where every child’s journey begins with love, curiosity, and joy.
+      </p>
+      <p class="about-text">
+        Founded in 2008, we believe that the early years are the foundation of a lifetime of learning. Our warm, playful environment helps little ones grow strong roots while giving them the wings to explore, dream, and soar.
+      </p>
+      <p class="about-text">
+        With caring teachers, thoughtful activities, and a child-centered approach, we celebrate every small step and big milestone together — because every child deserves to shine.
+      </p>
+    </div>
+
+    <!-- Right: Journey timeline -->
+    <div class="journey-side">
+      <h2 class="journey-title">Our Journey</h2>
+
+      <div class="timeline-wrapper">
+        <!-- Central 2008 box -->
+        <div class="milestone center-milestone">
+          <div class="year-box">2008</div>
+          <div class="roots-text">Roots to Wings<br>was born</div>
+        </div>
+
+        <!-- Bee decoration -->
+        <img 
+          src="assets/bee-removebg-preview.png" 
+          alt="Bee" 
+          class="bee">
+
+        <!-- Radial lines with years -->
+        <div class="radial-lines">
+          <div class="ray" style="--angle: 35deg;  --year: '2009'; --delay: 0.2s;"></div>
+          <div class="ray" style="--angle: 20deg;  --year: '2015'; --delay: 0.4s;"></div>
+          <div class="ray" style="--angle: 0deg;   --year: '2020'; --delay: 0.6s;"></div>
+          <div class="ray" style="--angle: -18deg; --year: '2024'; --delay: 0.8s;"></div>
+          <div class="ray" style="--angle: -40deg; --year: '2025'; --delay: 1.0s;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- School Background -->
+    <!-- <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">Our Story</h2>
+                    <p class="text-gray-600 mb-4">Founded in 2010, Little Wonders Pre-School began with a simple vision: to create a learning environment where children feel safe, valued, and excited to learn.</p>
+                    <p class="text-gray-600 mb-4">What started as a small neighborhood preschool with just 15 children has grown into a trusted educational institution serving over 300 families annually.</p>
+                    <p class="text-gray-600">Our journey has been guided by the belief that early childhood education should be a joyful experience that lays a strong foundation for lifelong learning.</p>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="bg-gradient-to-br from-amber-100 to-pink-100 rounded-2xl p-8 shadow-xl">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-indigo-600 mb-2">13+</div>
+                                <div class="text-gray-700">Years of Excellence</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-emerald-600 mb-2">300+</div>
+                                <div class="text-gray-700">Happy Children</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-amber-600 mb-2">25+</div>
+                                <div class="text-gray-700">Qualified Staff</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-4xl font-bold text-purple-600 mb-2">98%</div>
+                                <div class="text-gray-700">Parent Satisfaction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    
+    <!-- Vision & Mission -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Vision & Mission</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Vision -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="material-icons text-3xl">visibility</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Our Vision</h3>
+                    <p class="text-gray-600 text-center">To be the most trusted preschool that inspires young children to become curious, compassionate, and confident lifelong learners.</p>
+                </div>
+                
+                <!-- Mission -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="bg-gradient-to-r from-emerald-500 to-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="material-icons text-3xl">target</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Our Mission</h3>
+                    <p class="text-gray-600 text-center">To provide a nurturing, safe, and stimulating environment where children develop socially, emotionally, physically, and intellectually through play-based learning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Parents Trust Little Millennium -->
+<section class="py-12 md:py-16 -mt-16 bg-white">
+  <div class="container mx-auto px-4">
+
+    <!-- Section Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10 md:mb-14">
+      Why Parents Trust Little Millennium
+    </h2>
+
+    <!-- Main Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+
+      <!-- Vertical Card 1 -->
+      <div class="relative bg-blue-50 rounded-2xl overflow-hidden 
+                  border border-blue-300
+                  shadow-[0_30px_70px_-20px_rgba(59,130,246,0.7)]
+                  hover:shadow-[0_40px_90px_-15px_rgba(59,130,246,0.9)]
+                  transition-all duration-300 hover:-translate-y-1
+                  before:absolute before:inset-0 before:rounded-2xl 
+                  before:shadow-[inset_0_0_40px_rgba(59,130,246,0.35)]
+                  before:pointer-events-none flex flex-col">
+        <img 
+          src="assets/Ab1" 
+          alt="Safe learning space" 
+          class="w-full h-64 md:h-72 object-cover"
+        >
+        <div class="p-5 md:p-6 text-center flex-grow flex items-center justify-center">
+          <h3 class="text-lg md:text-xl font-semibold text-blue-900">
+            Safe & Stimulating Learning Spaces
+          </h3>
+        </div>
+      </div>
+
+      <!-- Vertical Card 2 (Tall Card) -->
+      <div class="relative bg-pink-50 rounded-2xl overflow-hidden 
+                  border border-pink-300
+                  shadow-[0_40px_90px_-20px_rgba(236,72,153,0.7)]
+                  hover:shadow-[0_50px_110px_-15px_rgba(236,72,153,0.95)]
+                  transition-all duration-300 hover:-translate-y-1
+                  before:absolute before:inset-0 before:rounded-2xl 
+                  before:shadow-[inset_0_0_50px_rgba(236,72,153,0.4)]
+                  before:pointer-events-none flex flex-col
+                  md:row-span-2 md:row-start-1">
+
+        <img 
+          src="https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?auto=format&fit=crop&w=800&q=80" 
+          alt="Small groups" 
+          class="w-full h-80 md:h-96 object-cover mb-[-72px]"
+        >
+
+        <div class="p-5 md:p-6 pt-14 text-center flex-grow flex items-end justify-center">
+          <h3 class="text-lg md:text-xl font-semibold text-pink-900">
+            Small groups for personalized care and attention
+          </h3>
+        </div>
+      </div>
+
+      <!-- Vertical Card 3 -->
+      <div class="relative bg-purple-50 rounded-2xl overflow-hidden 
+                  border border-purple-300
+                  shadow-[0_30px_70px_-20px_rgba(168,85,247,0.7)]
+                  hover:shadow-[0_40px_90px_-15px_rgba(168,85,247,0.95)]
+                  transition-all duration-300 hover:-translate-y-1
+                  before:absolute before:inset-0 before:rounded-2xl 
+                  before:shadow-[inset_0_0_40px_rgba(168,85,247,0.4)]
+                  before:pointer-events-none flex flex-col">
+        <img 
+          src="assets/Ab2" 
+          alt="Expert educators" 
+          class="w-full h-64 md:h-72 object-cover"
+        >
+        <div class="p-5 md:p-6 text-center flex-grow flex items-center justify-center">
+          <h3 class="text-lg md:text-xl font-semibold text-purple-900">
+            Expertly trained educators
+          </h3>
+        </div>
+      </div>
+
+      <!-- Horizontal Text Card -->
+      <div class="relative bg-gradient-to-r from-amber-50 to-yellow-50 
+                  rounded-2xl border border-amber-300 p-6 md:p-8 text-center 
+                  md:col-span-2 md:-mt-6
+                  shadow-[0_30px_80px_-20px_rgba(251,191,36,0.7)]
+                  hover:shadow-[0_40px_100px_-15px_rgba(251,191,36,0.95)]
+                  transition-all duration-300 hover:-translate-y-1
+                  before:absolute before:inset-0 before:rounded-2xl 
+                  before:shadow-[inset_0_0_40px_rgba(251,191,36,0.35)]
+                  before:pointer-events-none">
+        <h3 class="text-xl md:text-2xl font-bold text-amber-800 mb-3">
+          Structured parent involvement
+        </h3>
+        <p class="text-gray-700 text-base md:text-lg">
+          We believe parents are true partners in every step of the joyful learning journey
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <!-- Our Awards -->
+   <section class="py-16 -mt-16 bg-gradient-to-r from-amber-50 via-orange-50 to-yellow-50">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl md:text-5xl font-bold text-center text-indigo-800 mb-6">
+            Our Awards
+        </h2>
+        <p class="text-center text-lg text-gray-700 max-w-3xl mx-auto mb-12">
+            Recognized for What Matters Most — Excellence in Early Years Learning
+        </p>
+
+       <div class="flex flex-col lg:flex-row items-center gap-0">
+
+    <!-- LEFT: Mascot / Main Image -->
+    <div class="lg:w-5/12 flex justify-center lg:justify-start">
+        <img 
+            src="assets/About.png" 
+            alt="Little deer mascot holding award trophy" 
+            class="w-72 md:w-80 max-w-sm drop-shadow-2xl rounded-3xl"
+        >
+    </div>
+
+    <!-- RIGHT: Carousel of Awards (WIDER) -->
+    <div class="lg:w-8/12 lg:-ml-12">
+        <div class="award-carousel-wrapper w-full relative overflow-hidden rounded-2xl bg-gradient-to-r from-white/40 to-white/20 shadow-inner">
+            <div class="award-carousel flex animate-scroll gap-6 py-4 pl-4"
+                onmouseenter="this.style.animationPlayState='paused'"
+                onmouseleave="this.style.animationPlayState='running'">
+
+                <!-- Award Card 1 -->
+                <div class="flex-none w-80 sm:w-96 bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-52 bg-gray-100 flex items-center justify-center p-6">
+                        <img src="https://via.placeholder.com/200x200?text=Business+World+Award"
+                             alt="Business World Award Trophy"
+                             class="max-h-full object-contain">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-indigo-800 mb-2">
+                            Leading Preschool of India
+                        </h3>
+                        <p class="text-sm text-gray-600 font-medium">
+                            Business World Education Awards 2024
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Award Card 2 -->
+                <div class="flex-none w-80 sm:w-96 bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-52 bg-gray-100 flex items-center justify-center p-6">
+                        <img src="https://via.placeholder.com/200x200?text=ET+Education+Award"
+                             alt="ET Education Excellence Award"
+                             class="max-h-full object-contain">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-indigo-800 mb-2">
+                            Excellence in Innovative Pedagogy
+                        </h3>
+                        <p class="text-sm text-gray-600 font-medium">
+                            ET Education Awards 2025
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Award Card 3 -->
+                <div class="flex-none w-80 sm:w-96 bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-52 bg-gray-100 flex items-center justify-center p-6">
+                        <img src="https://via.placeholder.com/200x200?text=Early+Years+Educators+Award"
+                             alt="Early Years Educators Award"
+                             class="max-h-full object-contain">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-indigo-800 mb-2">
+                            Trailblazer in STEM & Coding
+                        </h3>
+                        <p class="text-sm text-gray-600 font-medium">
+                            Early Years Educators Summit 2025
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Award Card 4 -->
+                <div class="flex-none w-80 sm:w-96 bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-52 bg-gray-100 flex items-center justify-center p-6">
+                        <img src="https://via.placeholder.com/200x200?text=ET+Edge+Prestigious+Award"
+                             alt="ET Edge Prestigious Award"
+                             class="max-h-full object-contain">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-indigo-800 mb-2">
+                            Prestigious Institute Award
+                        </h3>
+                        <p class="text-sm text-gray-600 font-medium">
+                            ET Edge Recognition 2025
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Duplicates for seamless infinite loop -->
+                <div class="flex-none w-80 sm:w-96 bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-52 bg-gray-100 flex items-center justify-center p-6">
+                        <img src="https://via.placeholder.com/200x200?text=Business+World+Award"
+                             alt="Business World Award Trophy"
+                             class="max-h-full object-contain">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-indigo-800 mb-2">
+                            Leading Preschool of India
+                        </h3>
+                        <p class="text-sm text-gray-600 font-medium">
+                            Business World Education Awards 2024
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex-none w-80 sm:w-96 bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="h-52 bg-gray-100 flex items-center justify-center p-6">
+                        <img src="https://via.placeholder.com/200x200?text=ET+Education+Award"
+                             alt="ET Education Excellence Award"
+                             class="max-h-full object-contain">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold text-indigo-800 mb-2">
+                            Excellence in Innovative Pedagogy
+                        </h3>
+                        <p class="text-sm text-gray-600 font-medium">
+                            ET Education Awards 2025
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <p class="text-center text-gray-600 mt-12 italic max-w-4xl mx-auto">
+            Our accolades are a reflection of the trust parents place in us, and the joyful learning journeys we create every day.
+        </p>
+    </div>
+
+</div>
+    </div>
+</section>
+
+    <!-- Team Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Meet Our Leadership</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Principal -->
+                <div class="text-center">
+                    <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-indigo-100 mx-auto mb-6">
+                        <div class="w-full h-full bg-gradient-to-br from-indigo-200 to-purple-200 flex items-center justify-center">
+                            <span class="material-icons text-6xl text-indigo-600">person</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">Dr. Sarah Johnson</h3>
+                    <p class="text-indigo-600 font-medium mb-2">Principal & Founder</p>
+                    <p class="text-gray-600">PhD in Early Childhood Education with 20+ years of experience.</p>
+                </div>
+                
+                <!-- Academic Head -->
+                <div class="text-center">
+                    <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-emerald-100 mx-auto mb-6">
+                        <div class="w-full h-full bg-gradient-to-br from-emerald-200 to-green-200 flex items-center justify-center">
+                            <span class="material-icons text-6xl text-emerald-600">person</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">Ms. Priya Sharma</h3>
+                    <p class="text-emerald-600 font-medium mb-2">Academic Head</p>
+                    <p class="text-gray-600">M.Ed. in Child Development with 15 years of teaching experience.</p>
+                </div>
+                
+                <!-- Operations Head -->
+                <div class="text-center">
+                    <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-amber-100 mx-auto mb-6">
+                        <div class="w-full h-full bg-gradient-to-br from-amber-200 to-orange-200 flex items-center justify-center">
+                            <span class="material-icons text-6xl text-amber-600">person</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800">Mr. Robert Chen</h3>
+                    <p class="text-amber-600 font-medium mb-2">Operations Head</p>
+                    <p class="text-gray-600">Ensuring smooth operations and parent communication.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+<button 
+        id="backToTop"
+        class="fixed bottom-8 right-8 z-50 hidden w-14 h-14 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white 
+               flex items-center justify-center shadow-xl hover:shadow-2xl 
+               transition-all duration-300 transform hover:scale-110"
+        aria-label="Back to top"
+    >
+        <span class="material-icons">expand_less</span>
+    </button>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-600 p-2 rounded-lg mr-3">
+                            <span class="material-icons">school</span>
+                        </div>
+                        <h3 class="text-xl font-bold">Little Wonders</h3>
+                    </div>
+                    <p class="text-gray-300">Providing quality early childhood education since 2010.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Home</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white">About Us</a></li>
+                        <li><a href="programs.html" class="text-gray-300 hover:text-white">Programs</a></li>
+                        <li><a href="admissions.html" class="text-gray-300 hover:text-white">Admissions</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">More Information</h4>
+                    <ul class="space-y-3">
+                        <li><a href="infrastructure.html" class="text-gray-300 hover:text-white">Infrastructure</a></li>
+                        <li><a href="why-choose-us.html" class="text-gray-300 hover:text-white">Why Choose Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white">Contact Us</a></li>
+                        <li><a href="login.html" class="text-gray-300 hover:text-white">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <span class="material-icons mr-3 text-indigo-400">location_on</span>
+                            <span class="text-gray-300">123 Education Street</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-icons mr-3 text-indigo-400">phone</span>
+                            <span class="text-gray-300">+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-icons mr-3 text-indigo-400">email</span>
+                            <span class="text-gray-300">info@littlewonders.edu</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 Little Wonders. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+  const backToTopBtn = document.getElementById("backToTop");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.remove("hidden");
+    } else {
+      backToTopBtn.classList.add("hidden");
+    }
+  });
+
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+</script>
+
+</body>
+</html>
