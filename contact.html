@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
         :root {
             --primary: #6366f1;
@@ -241,7 +242,7 @@
                                     <span class="material-icons absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg group-focus-within:text-indigo-500">person</span>
                                     <input type="text" 
                                            class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition-all text-gray-700 placeholder-gray-400"
-                                           placeholder="John Doe">
+                                           placeholder="Maya Pierce">
                                 </div>
                             </div>
                             
@@ -251,7 +252,7 @@
                                     <span class="material-icons absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg group-focus-within:text-indigo-500">phone</span>
                                     <input type="tel" 
                                            class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition-all text-gray-700 placeholder-gray-400"
-                                           placeholder="+1 (555) 123-4567">
+                                           placeholder="+91 9997779997">
                                 </div>
                             </div>
                         </div>
@@ -269,15 +270,21 @@
                         <div class="group">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Child's Age (Optional)</label>
                             <div class="relative">
-                                <span class="material-icons absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg group-focus-within:text-indigo-500">child_care</span>
-                                <select class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition-all text-gray-700 appearance-none">
+                                <span
+                                    class="material-icons absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg group-focus-within:text-indigo-500">child_care</span>
+                                <select
+                                    class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 outline-none transition-all text-gray-700 appearance-none">
                                     <option value="">Select age group</option>
                                     <option value="2-3">2-3 years (Playgroup)</option>
                                     <option value="3-4">3-4 years (Nursery)</option>
                                     <option value="4-5">4-5 years (LKG)</option>
                                     <option value="5-6">5-6 years (UKG)</option>
                                 </select>
-                                <span class="material-icons absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg">arrow_drop_down</span>
+                                <!-- FIX HERE -->
+                                <span
+                                    class="material-icons absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg pointer-events-none">
+                                    arrow_drop_down
+                                </span>
                             </div>
                         </div>
                         
@@ -303,7 +310,7 @@
                         <p class="text-gray-500 text-sm mb-2">Prefer to call? We're available:</p>
                         <a href="tel:+15551234567" class="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium group">
                             <span class="material-icons mr-2 text-lg">call</span>
-                            <span>+1 (555) 123-4567</span>
+                            <span>+91 9997779997</span>
                             <span class="material-icons ml-2 text-lg group-hover:animate-pulse">phone_forwarded</span>
                         </a>
                     </div>
@@ -311,143 +318,140 @@
             </div>
 
             <!-- Interactive Map Card -->
-            <div class="reveal-on-scroll" style="transition-delay: 0.2s;">
-                <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 hover:shadow-2xl transition-shadow duration-500">
-                    <!-- Map Header -->
-                    <div class="flex items-center mb-8">
-                        <div class="flex-shrink-0">
-                            <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center shadow-md">
-                                <span class="material-icons text-white">place</span>
-                            </div>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-xl md:text-2xl font-bold text-gray-800">Visit Our Campus</h3>
-                            <p class="text-gray-500 text-sm">123 Education Street, Learning City</p>
-                        </div>
+<div class="reveal-on-scroll" style="transition-delay: 0.2s;">
+    <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 hover:shadow-2xl transition-shadow duration-500">
+        <!-- Map Header -->
+        <div class="flex items-center mb-8">
+            <div class="flex-shrink-0">
+                <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center shadow-md">
+                    <span class="material-icons text-white">place</span>
+                </div>
+            </div>
+            <div class="ml-4">
+                <h3 class="text-xl md:text-2xl font-bold text-gray-800">Visit Our Campus</h3>
+                <p class="text-gray-500 text-sm">123 Education Street, Learning City</p>
+            </div>
+        </div>
+        
+        <!-- Interactive Map -->
+        <div class="relative h-64 md:h-72 mb-6 rounded-xl overflow-hidden border border-gray-100">
+            <!-- Google Maps Embed -->
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3443.231368020938!2d78.01061667560634!3d30.344373774773953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3908d5f46ccf514d%3A0x5712ec527c56094c!2sForest%20Research%20Institute%20Deemed%20University!5e0!3m2!1sen!2sin!4v1769953085347!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                style="border:0; position: absolute; inset: 0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            
+            <!-- Location Pins (overlay on top of the real map) -->
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <!-- Main School Pin -->
+               <a href="https://www.google.com/maps/search/?api=1&query=30.3443738,78.0106167" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   class="relative group cursor-pointer block">
+    <div class="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full flex items-center justify-center shadow-xl transform hover:scale-110 transition-transform duration-300">
+        <span class="material-icons text-white">school</span>
+    </div>
+    <div class="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-white p-3 rounded-lg shadow-2xl w-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        <div class="font-bold text-gray-800 text-sm">Little Wonders School</div>
+        <div class="text-gray-600 text-xs mt-1">Main Campus • Click for directions</div>
+        <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white rotate-45"></div>
+    </div>
+</a>
+            </div>
+            
+            <!-- Park Pin -->
+            <div class="absolute top-1/3 left-1/4 cursor-pointer group" onclick="showParkInfo()">
+                <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
+                    <span class="material-icons text-white text-sm">park</span>
+                </div>
+            </div>
+            
+            <!-- Parking Pin -->
+            <div class="absolute bottom-1/4 right-1/3 cursor-pointer group" onclick="showParkingInfo()">
+                <div class="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
+                    <span class="material-icons text-white text-sm">local_parking</span>
+                </div>
+            </div>
+            
+            <!-- Map Legend -->
+            <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-md border border-gray-100">
+                <div class="text-xs font-medium text-gray-700 mb-2">Legend</div>
+                <div class="space-y-1">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 mr-2"></div>
+                        <span class="text-xs text-gray-600">School</span>
                     </div>
-                    
-                    <!-- Interactive Map -->
-                    <div class="relative h-64 md:h-72 mb-6 rounded-xl overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 border border-gray-100">
-                        <!-- Map Background -->
-                        <div class="absolute inset-0 bg-gradient-to-br from-blue-100/30 to-indigo-100/30">
-                            <!-- Grid Pattern -->
-                            <div class="absolute inset-0 opacity-20">
-                                <div class="grid grid-cols-6 grid-rows-6 gap-4 h-full w-full">
-                                    <div class="border border-indigo-200/50 rounded"></div>
-                                    <div class="border border-indigo-200/50 rounded"></div>
-                                    <div class="border border-indigo-200/50 rounded"></div>
-                                    <div class="border border-indigo-200/50 rounded col-span-3"></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Road Patterns -->
-                            <div class="absolute top-1/2 left-4 right-4 h-1 bg-gray-300/50 rounded-full"></div>
-                            <div class="absolute top-1/3 left-1/4 w-1 h-12 bg-gray-300/50 rounded-full"></div>
-                            <div class="absolute bottom-1/4 right-1/3 w-1 h-16 bg-gray-300/50 rounded-full"></div>
-                        </div>
-                        
-                        <!-- Location Pins -->
-                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                            <!-- Main School Pin -->
-                            <div class="relative group cursor-pointer" onclick="openDirections()">
-                                <div class="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full flex items-center justify-center shadow-xl transform hover:scale-110 transition-transform duration-300">
-                                    <span class="material-icons text-white">school</span>
-                                </div>
-                                <div class="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-white p-3 rounded-lg shadow-2xl w-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                                    <div class="font-bold text-gray-800 text-sm">Little Wonders School</div>
-                                    <div class="text-gray-600 text-xs mt-1">Main Campus • Click for directions</div>
-                                    <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white rotate-45"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Park Pin -->
-                        <div class="absolute top-1/3 left-1/4 cursor-pointer group" onclick="showParkInfo()">
-                            <div class="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
-                                <span class="material-icons text-white text-sm">park</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Parking Pin -->
-                        <div class="absolute bottom-1/4 right-1/3 cursor-pointer group" onclick="showParkingInfo()">
-                            <div class="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
-                                <span class="material-icons text-white text-sm">local_parking</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Map Legend -->
-                        <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-md border border-gray-100">
-                            <div class="text-xs font-medium text-gray-700 mb-2">Legend</div>
-                            <div class="space-y-1">
-                                <div class="flex items-center">
-                                    <div class="w-3 h-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 mr-2"></div>
-                                    <span class="text-xs text-gray-600">School</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <div class="w-3 h-3 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 mr-2"></div>
-                                    <span class="text-xs text-gray-600">Park</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <div class="w-3 h-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 mr-2"></div>
-                                    <span class="text-xs text-gray-600">Parking</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 mr-2"></div>
+                        <span class="text-xs text-gray-600">Park</span>
                     </div>
-                    
-                    <!-- Map Controls & Info -->
-                    <div class="space-y-6">
-                        <!-- Transportation Info -->
-                        <div class="grid grid-cols-3 gap-3">
-                            <div class="bg-blue-50 p-3 rounded-lg text-center group hover:bg-blue-100 transition-colors">
-                                <span class="material-icons text-blue-600 text-lg mb-1">train</span>
-                                <div class="text-xs text-gray-700">Metro</div>
-                                <div class="text-sm font-bold text-gray-800">5 min walk</div>
-                            </div>
-                            <div class="bg-emerald-50 p-3 rounded-lg text-center group hover:bg-emerald-100 transition-colors">
-                                <span class="material-icons text-emerald-600 text-lg mb-1">directions_bus</span>
-                                <div class="text-xs text-gray-700">Bus Stop</div>
-                                <div class="text-sm font-bold text-gray-800">3 min walk</div>
-                            </div>
-                            <div class="bg-amber-50 p-3 rounded-lg text-center group hover:bg-amber-100 transition-colors">
-                                <span class="material-icons text-amber-600 text-lg mb-1">local_parking</span>
-                                <div class="text-xs text-gray-700">Parking</div>
-                                <div class="text-sm font-bold text-gray-800">Available</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Action Buttons -->
-                        <div class="flex flex-col sm:flex-row gap-3">
-                            <button onclick="openDirections()" 
-                                    class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-3 rounded-xl font-medium text-sm hover:shadow-lg transition-all flex items-center justify-center group">
-                                <span class="material-icons mr-2 text-lg">directions</span>
-                                <span>Get Directions</span>
-                            </button>
-                            <button onclick="openVirtualTour()" 
-                                    class="flex-1 bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white py-3 rounded-xl font-medium text-sm hover:shadow-lg transition-all flex items-center justify-center group">
-                                <span class="material-icons mr-2 text-lg">360</span>
-                                <span>Virtual Tour</span>
-                            </button>
-                        </div>
-                        
-                        <!-- Hours Info -->
-                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
-                            <div class="flex items-center mb-2">
-                                <span class="material-icons text-gray-500 mr-2 text-sm">schedule</span>
-                                <div class="text-sm font-medium text-gray-700">Visiting Hours</div>
-                            </div>
-                            <div class="text-xs text-gray-600 grid grid-cols-2 gap-1">
-                                <div>Mon-Fri:</div>
-                                <div class="text-right">8:00 AM - 6:00 PM</div>
-                                <div>Saturday:</div>
-                                <div class="text-right">9:00 AM - 1:00 PM</div>
-                                <div>Sunday:</div>
-                                <div class="text-right">By appointment</div>
-                            </div>
-                        </div>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 mr-2"></div>
+                        <span class="text-xs text-gray-600">Parking</span>
                     </div>
                 </div>
             </div>
+        </div>
+        
+        <!-- Map Controls & Info -->
+        <div class="space-y-6">
+            <!-- Transportation Info -->
+            <div class="grid grid-cols-3 gap-3">
+                <div class="bg-blue-50 p-3 rounded-lg text-center group hover:bg-blue-100 transition-colors">
+                    <span class="material-icons text-blue-600 text-lg mb-1">train</span>
+                    <div class="text-xs text-gray-700">Metro</div>
+                    <div class="text-sm font-bold text-gray-800">5 min walk</div>
+                </div>
+                <div class="bg-emerald-50 p-3 rounded-lg text-center group hover:bg-emerald-100 transition-colors">
+                    <span class="material-icons text-emerald-600 text-lg mb-1">directions_bus</span>
+                    <div class="text-xs text-gray-700">Bus Stop</div>
+                    <div class="text-sm font-bold text-gray-800">3 min walk</div>
+                </div>
+                <div class="bg-amber-50 p-3 rounded-lg text-center group hover:bg-amber-100 transition-colors">
+                    <span class="material-icons text-amber-600 text-lg mb-1">local_parking</span>
+                    <div class="text-xs text-gray-700">Parking</div>
+                    <div class="text-sm font-bold text-gray-800">Available</div>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3">
+                <!-- Using place name (preferred) -->
+<button onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=Forest+Research+Institute+Deemed+University,+Dehradun', '_blank')"
+        class="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-3 rounded-xl font-medium text-sm hover:shadow-lg transition-all flex items-center justify-center group">
+    <span class="material-icons mr-2 text-lg">directions</span>
+    <span>Get Directions</span>
+</button>
+                <button onclick="openVirtualTour()" 
+                        class="flex-1 bg-gradient-to-r from-gray-700 to-gray-800 hover:from-gray-800 hover:to-gray-900 text-white py-3 rounded-xl font-medium text-sm hover:shadow-lg transition-all flex items-center justify-center group">
+                    <span class="material-icons mr-2 text-lg">360</span>
+                    <span>Virtual Tour</span>
+                </button>
+            </div>
+            
+            <!-- Hours Info -->
+            <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                <div class="flex items-center mb-2">
+                    <span class="material-icons text-gray-500 mr-2 text-sm">schedule</span>
+                    <div class="text-sm font-medium text-gray-700">Visiting Hours</div>
+                </div>
+                <div class="text-xs text-gray-600 grid grid-cols-2 gap-1">
+                    <div>Mon-Fri:</div>
+                    <div class="text-right">8:00 AM - 6:00 PM</div>
+                    <div>Saturday:</div>
+                    <div class="text-right">9:00 AM - 1:00 PM</div>
+                    <div>Sunday:</div>
+                    <div class="text-right">By appointment</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         </div>
         
         <!-- Additional Contact Methods -->
@@ -566,69 +570,115 @@
         <span class="material-icons">expand_less</span>
     </button>
 
-    <!-- Footer -->
-   <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- School Info -->
-                <div>
-                    <div class="flex items-center mb-4">
-                        <div class="bg-indigo-600 p-2 rounded-lg mr-3">
-                            <span class="material-icons">school</span>
-                        </div>
-                        <h3 class="text-xl font-bold">Little Wonders</h3>
+  <!-- Footer -->
+<footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- School Info -->
+            <div>
+                <div class="flex items-center mb-4">
+                    <div class="bg-indigo-600 p-2 rounded-lg mr-3">
+                        <span class="material-symbols-outlined text-white">school</span>
                     </div>
-                    <p class="text-gray-300">Providing quality early childhood education since 2010. Nurturing young minds with care, creativity, and innovation.</p>
+                    <h3 class="text-xl font-bold">Little Wonders</h3>
                 </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
-                    <ul class="space-y-3">
-                        <li><a href="index.html" class="text-gray-300 hover:text-white">Home</a></li>
-                        <li><a href="about.html" class="text-gray-300 hover:text-white">About Us</a></li>
-                        <li><a href="programs.html" class="text-gray-300 hover:text-white">Programs</a></li>
-                        <!-- <li><a href="admissions.html" class="text-gray-300 hover:text-white">Admissions</a></li> -->
-                    </ul>
-                </div>
-                
-                <!-- More Links -->
-                <div>
-                    <h4 class="text-lg font-bold mb-6">More Information</h4>
-                    <ul class="space-y-3">
-                        <!-- <li><a href="infrastructure.html" class="text-gray-300 hover:text-white">Infrastructure</a></li>
-                        <li><a href="why-choose-us.html" class="text-gray-300 hover:text-white">Why Choose Us</a></li> -->
-                        <li><a href="contact.html" class="text-gray-300 hover:text-white">Contact Us</a></li>
-                        <li><a href="login.html" class="text-gray-300 hover:text-white">Login</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact Info -->
-                <div>
-                    <h4 class="text-lg font-bold mb-6">Contact Us</h4>
-                    <ul class="space-y-4">
-                        <li class="flex items-center">
-                            <span class="material-icons mr-3 text-indigo-400">location_on</span>
-                            <span class="text-gray-300">123 SB Road, Pune</span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="material-icons mr-3 text-indigo-400">phone</span>
-                            <span class="text-gray-300">+91 9997776669 </span>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="material-icons mr-3 text-indigo-400">email</span>
-                            <span class="text-gray-300">info@littlewonders.edu</span>
-                        </li>
-                    </ul>
-                </div>
+                <p class="text-gray-300">Providing quality early childhood education since 2010. Nurturing young minds
+                    with care, creativity, and innovation.</p>
             </div>
-            
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2026 Little Wonders. All rights reserved.</p>
+
+            <!-- Quick Links -->
+            <div class="md:pl-20">
+                <h4 class="text-lg font-bold mb-6 flex items-center">
+                    <span class="material-symbols-outlined mr-2 text-indigo-400">link</span>
+                    Quick Links
+                </h4>
+                <ul class="space-y-3">
+                    <li class="flex items-center">
+                        <span class="material-symbols-outlined mr-2 text-sm text-indigo-400">chevron_right</span>
+                        <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="material-symbols-outlined mr-2 text-sm text-indigo-400">chevron_right</span>
+                        <a href="about.html" class="text-gray-300 hover:text-white transition-colors">About Us</a>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="material-symbols-outlined mr-2 text-sm text-indigo-400">chevron_right</span>
+                        <a href="programs.html" class="text-gray-300 hover:text-white transition-colors">Programs</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- More Links -->
+            <div>
+                <h4 class="text-lg font-bold mb-6 flex items-center">
+                    <span class="material-symbols-outlined mr-2 text-indigo-400">info</span>
+                    More Information
+                </h4>
+                <ul class="space-y-3">
+                    <li class="flex items-center">
+                        <span class="material-symbols-outlined mr-2 text-sm text-indigo-400">chevron_right</span>
+                        <a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact Us</a>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="material-symbols-outlined mr-2 text-sm text-indigo-400">chevron_right</span>
+                        <a href="login.html" class="text-gray-300 hover:text-white transition-colors">Login</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+                <h4 class="text-lg font-bold mb-6 flex items-center">
+                    <span class="material-symbols-outlined mr-2 text-indigo-400">contact_page</span>
+                    Contact Us
+                </h4>
+                <ul class="space-y-4">
+                    <li class="flex items-center">
+                        <span class="material-symbols-outlined mr-3 text-indigo-400">call</span>
+                        <span class="text-gray-300">+91 9997776669</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="material-symbols-outlined mr-3 text-indigo-400 mt-0.5">location_on</span>
+                        <span class="text-gray-300">123 SB Road, Pune</span>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="material-symbols-outlined mr-3 text-indigo-400">mail</span>
+                        <span class="text-gray-300">info@littlewonders.edu</span>
+                    </li>
+                </ul>
+
+                <!-- Optional: Add social media icons -->
+                <!-- <div class="mt-6">
+                    <h5 class="text-md font-semibold mb-3 flex items-center">
+                        <span class="material-symbols-outlined mr-2 text-indigo-400">share</span>
+                        Follow Us
+                    </h5>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-gray-700 hover:bg-indigo-600 p-2 rounded-full transition-colors">
+                            <span class="material-symbols-outlined text-white text-lg">facebook</span>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-indigo-600 p-2 rounded-full transition-colors">
+                            <span class="material-symbols-outlined text-white text-lg">instagram</span>
+                        </a>
+                        <a href="#" class="bg-gray-700 hover:bg-indigo-600 p-2 rounded-full transition-colors">
+                            <span class="material-symbols-outlined text-white text-lg">play_arrow</span>
+                        </a>
+                    </div>
+                </div> -->
             </div>
         </div>
-    </footer>
 
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="mb-4 md:mb-0">&copy; 2026 Little Wonders. All rights reserved.</p>
+                <div class="flex items-center">
+                    <span class="material-symbols-outlined mr-2 text-sm">shield</span>
+                    <span>Committed to Child Safety & Quality Education</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <script>
     // Reveal on scroll
