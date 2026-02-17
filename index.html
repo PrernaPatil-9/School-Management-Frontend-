@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/custom.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
   @keyframes float-slow {
     0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -27,6 +28,624 @@
   .delay-1000 { animation-delay: 1s; }
   .delay-1500 { animation-delay: 1.5s; }
   .delay-2000 { animation-delay: 2s; }
+
+/* Base card styles */
+.playgroup-card {
+  position: relative;
+  width: 280px;
+  height: 360px;
+  border-radius: 16px;
+  background: #fdf6f0;
+  box-shadow: 4px 4px 20px rgba(0,0,0,0.25);
+  perspective: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s ease;
+  border: 4px solid #ffffff;
+  box-shadow: 
+    0 8px 0 #fbbf24,   /* yellow bottom shadow */
+    0 0 0 6px #fde68a; /* soft pastel outer ring */
+}
+
+/* Add z-index on hover to bring card to front - BUT limited to section context */
+.playgroup-card:hover {
+  transform: rotateZ(-7deg);
+  z-index: 10;  /* Reduced from 100 to 10 - still above other cards but below header */
+}
+
+/* Cover + Inner shared styles */
+.card-cover,
+.card-inner {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: left;
+  transition: 0.5s ease;
+  box-shadow: 4px 4px 20px rgba(0,0,0,0.25);
+  cursor: pointer;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  backface-visibility: hidden;
+}
+
+/* Inner different transform origin */
+.card-inner {
+  transform-origin: right;
+}
+
+/* Hover Effects - with controlled z-index */
+.playgroup-card:hover .card-cover {
+  transform: rotateY(-68deg);
+}
+
+.playgroup-card:hover .card-inner {
+  transform: rotateZ(18deg) rotateX(-22deg) rotateY(-12deg) translateX(180px);
+  box-shadow: 6px 8px 30px rgba(0,0,0,0.35);
+  z-index: 11;  /* Reduced from 101 to 11 */
+}
+
+/* Card Content Styles - WITH BORDERS */
+.card-inner .card-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(2px);
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 10px;
+}
+
+/* Emoji and Icon Styles */
+.emoji-icon {
+  font-size: 32px;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+}
+
+.info-icon {
+  font-size: 20px;
+  margin-right: 8px;
+  min-width: 28px;
+  text-align: center;
+}
+
+/* Card Title */
+.card-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+/* Info Items */
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 5px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.15);
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+}
+
+.info-item strong {
+  font-weight: 600;
+  color: #222;
+}
+
+/* Text */
+.card-text {
+  font-size: 26px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+/* Program 1 - Playgroup */
+.playgroup-card:first-child .card-cover {
+  background: linear-gradient(135deg, #ffb6c1, #ffd700);
+}
+
+.playgroup-card:first-child .card-inner {
+  background: linear-gradient(135deg, #87cefa, #ffb6c1);
+}
+
+/* Program 2 - Nursery (Blue Theme) */
+.playgroup-card:nth-child(2) .card-cover {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+}
+
+.playgroup-card:nth-child(2) .card-inner {
+  background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+}
+
+/* Program 3 - LKG (Purple Theme) */
+.playgroup-card:nth-child(3) .card-cover {
+  background: linear-gradient(135deg, #c084fc, #a855f7);
+}
+
+.playgroup-card:nth-child(3) .card-inner {
+  background: linear-gradient(135deg, #e9d5ff, #d8b4fe);
+}
+
+/* Container for cards */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+  z-index: 1;  /* Ensure container has its own stacking context */
+}
+
+/* Programs Section - ADD THESE STYLES */
+.programs-section {
+  width: 100%;
+  position: relative;
+  z-index: 1;  /* Lower than header */
+  isolation: isolate;  /* Creates new stacking context */
+
+  --size: 150px; /* control pattern size */
+  --color: #f8eaea; /* softer pastel tone for school theme */
+
+  background: 
+    radial-gradient(circle at 15% 30%, transparent 40%, var(--color) 41%),
+    radial-gradient(circle at 85% 30%, transparent 40%, var(--color) 41%),
+    radial-gradient(circle at 50% 70%, transparent 40%, var(--color) 41%),
+    radial-gradient(circle at 15% 70%, transparent 40%, var(--color) 41%),
+    radial-gradient(circle at 85% 70%, transparent 40%, var(--color) 41%),
+    linear-gradient(
+      45deg,
+      var(--color) 25%,
+      rgba(0, 0, 0, 0.04) 0,
+      rgba(0, 0, 0, 0.04) 50%,
+      var(--color) 0,
+      var(--color) 75%,
+      #ffffff 0,
+      #ffffff 100%,
+      var(--color) 0
+    );
+
+  background-size: var(--size) var(--size);
+}
+
+/* ADD THIS - For header (assuming your header has a high z-index) */
+header, 
+.navbar,
+.site-header {
+  position: relative;
+  z-index: 100;  /* Higher than cards */
+}
+
+/* ========== MOBILE RESPONSIVE STYLES ========== */
+
+/* Tablets and small desktops */
+@media (max-width: 1024px) {
+  .cards-container {
+    gap: 40px;
+    padding: 30px;
+  }
+  
+  .playgroup-card {
+    width: 260px;
+    height: 340px;
+  }
+  
+  .card-text {
+    font-size: 24px;
+  }
+  
+  .card-title {
+    font-size: 20px;
+  }
+  
+  .info-item {
+    font-size: 13px;
+    padding: 4px 6px;
+  }
+  
+  .info-icon {
+    font-size: 18px;
+    min-width: 24px;
+  }
+  
+  .emoji-icon {
+    font-size: 28px;
+  }
+}
+
+/* Mobile landscape and small tablets */
+@media (max-width: 768px) {
+  .cards-container {
+    gap: 50px;
+    padding: 20px;
+  }
+  
+  .playgroup-card {
+    width: 280px;
+    height: 360px;
+  }
+  
+  /* Disable complex hover transforms on mobile */
+  .playgroup-card:hover {
+    transform: none;
+    z-index: 1;  /* Reset z-index on mobile */
+  }
+  
+  .playgroup-card:hover .card-cover {
+    transform: none;
+  }
+  
+  .playgroup-card:hover .card-inner {
+    transform: none;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.25);
+    z-index: 1;
+  }
+  
+  /* Make cards clickable with active state instead */
+  .playgroup-card:active .card-cover {
+    transform: rotateY(-68deg);
+  }
+  
+  .playgroup-card:active .card-inner {
+    transform: rotateZ(18deg) rotateX(-22deg) rotateY(-12deg) translateX(180px);
+    box-shadow: 6px 8px 30px rgba(0,0,0,0.35);
+    z-index: 2;
+  }
+  
+  .playgroup-card:active {
+    transform: rotateZ(-7deg);
+    z-index: 2;
+  }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+  .cards-container {
+    gap: 30px;
+    padding: 15px;
+  }
+  
+  .playgroup-card {
+    width: 260px;
+    height: 340px;
+  }
+  
+  .card-inner {
+    padding: 15px;
+  }
+  
+  .card-inner .card-content {
+    padding: 12px;
+    border-width: 2px;
+  }
+  
+  .card-header {
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom-width: 1.5px;
+  }
+  
+  .card-text {
+    font-size: 22px;
+  }
+  
+  .card-title {
+    font-size: 18px;
+  }
+  
+  .emoji-icon {
+    font-size: 24px;
+  }
+  
+  .info-item {
+    margin-bottom: 8px;
+    padding: 4px 6px;
+    font-size: 12px;
+  }
+  
+  .info-icon {
+    font-size: 16px;
+    margin-right: 6px;
+    min-width: 22px;
+  }
+  
+  /* Adjust hover replacement for small screens */
+  .playgroup-card:active .card-inner {
+    transform: rotateZ(15deg) rotateX(-18deg) rotateY(-10deg) translateX(120px);
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 360px) {
+  .cards-container {
+    gap: 25px;
+    padding: 10px;
+  }
+  
+  .playgroup-card {
+    width: 240px;
+    height: 320px;
+  }
+  
+  .card-inner .card-content {
+    padding: 10px;
+  }
+  
+  .card-title {
+    font-size: 16px;
+  }
+  
+  .info-item {
+    font-size: 11px;
+  }
+  
+  .info-icon {
+    font-size: 14px;
+    min-width: 20px;
+  }
+  
+  .playgroup-card:active .card-inner {
+    transform: rotateZ(12deg) rotateX(-15deg) rotateY(-8deg) translateX(80px);
+  }
+}
+
+/* Touch device optimization */
+@media (hover: none) and (pointer: coarse) {
+  /* For touch devices, use active state instead of hover */
+  .playgroup-card:hover {
+    transform: none;
+    z-index: 1;
+  }
+  
+  .playgroup-card:hover .card-cover {
+    transform: none;
+  }
+  
+  .playgroup-card:hover .card-inner {
+    transform: none;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.25);
+    z-index: 1;
+  }
+  
+  .playgroup-card:active {
+    transform: rotateZ(-7deg);
+    z-index: 2;
+  }
+  
+  .playgroup-card:active .card-cover {
+    transform: rotateY(-68deg);
+  }
+  
+  .playgroup-card:active .card-inner {
+    transform: rotateZ(18deg) rotateX(-22deg) rotateY(-12deg) translateX(180px);
+    box-shadow: 6px 8px 30px rgba(0,0,0,0.35);
+    z-index: 2;
+  }
+}
+
+/* Handle very large screens */
+@media (min-width: 1440px) {
+  .cards-container {
+    gap: 80px;
+  }
+  
+  .playgroup-card {
+    width: 300px;
+    height: 380px;
+  }
+  
+  .card-text {
+    font-size: 28px;
+  }
+  
+  .card-title {
+    font-size: 24px;
+  }
+  
+  .info-item {
+    font-size: 15px;
+  }
+}
+
+@keyframes leftToRight {
+    0% {
+        transform: translateX(0) rotate(0deg);
+        opacity: 0.3;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    20% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.9;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateX(120vw) rotate(360deg);
+        opacity: 0.3;
+    }
+}
+
+@keyframes rightToLeft {
+    0% {
+        transform: translateX(0) rotate(0deg);
+        opacity: 0.3;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    20% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.9;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateX(-120vw) rotate(-360deg);
+        opacity: 0.3;
+    }
+}
+
+/* Different speeds for variety */
+.animate-left-to-right {
+    animation: leftToRight 18s linear infinite;
+}
+
+.animate-right-to-left {
+    animation: rightToLeft 18s linear infinite;
+}
+
+/* Add some variation with different animation durations for individual icons */
+[style*="top: 5%"] { animation-duration: 15s; }
+[style*="top: 15%"] { animation-duration: 20s; }
+[style*="top: 25%"] { animation-duration: 22s; }
+[style*="top: 35%"] { animation-duration: 17s; }
+[style*="top: 45%"] { animation-duration: 19s; }
+[style*="top: 55%"] { animation-duration: 21s; }
+[style*="top: 65%"] { animation-duration: 16s; }
+[style*="top: 75%"] { animation-duration: 23s; }
+[style*="top: 85%"] { animation-duration: 18s; }
+[style*="top: 95%"] { animation-duration: 20s; }
+
+/* Right to left icons get slightly different durations */
+[style*="right: -10%"] { animation-duration: 19s; }
+[style*="right: -15%"] { animation-duration: 16s; }
+[style*="right: -20%"] { animation-duration: 21s; }
+[style*="right: -25%"] { animation-duration: 23s; }
+[style*="right: -30%"] { animation-duration: 17s; }
+[style*="right: -35%"] { animation-duration: 20s; }
+[style*="right: -40%"] { animation-duration: 22s; }
+[style*="right: -45%"] { animation-duration: 18s; }
+[style*="right: -50%"] { animation-duration: 15s; }
+[style*="right: -55%"] { animation-duration: 24s; }
+
+/* Ensure icons don't interfere with clicks */
+.pointer-events-none {
+    pointer-events: none;
+}
+@keyframes peekMove {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    20% {
+        transform: translateX(-25px) translateY(-3px);
+    }
+    40% {
+        transform: translateX(-15px) translateY(2px);
+    }
+    60% {
+        transform: translateX(-25px) translateY(-2px);
+    }
+    80% {
+        transform: translateX(-10px) translateY(3px);
+    }
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+.animate-peek-move {
+    animation: peekMove 6s ease-in-out infinite;
+}
+
+/* Remove any circular styling */
+.programs-section .absolute img,
+.school-highlights .absolute img {
+    border-radius: 0;
+}
+
+/* Ensure images are flush with right border */
+.programs-section .absolute,
+.school-highlights .absolute {
+    right: 0;
+}
+
+/* Add a subtle connector effect between sections */
+.programs-section + .school-highlights {
+    margin-top: -1px;
+}
+
+/* Common animation for subtle shift - adjust duration/speed as needed */
+@keyframes liveGradientShift {
+  0%   { background-position: 0% 100%; }   /* darker at bottom */
+  50%  { background-position: 0% 0%;   }   /* shifts upward slightly */
+  100% { background-position: 0% 100%; }   /* back to start */
+}
+
+/* Base class for all animated cards */
+.animated-card {
+  background-size: 100% 200%;              /* taller gradient for movement */
+  background-position: 0% 100%;            /* start darker at bottom */
+  animation: liveGradientShift 15s ease-in-out infinite;
+  transition: transform 0.3s ease;         /* optional hover lift */
+}
+
+/* Optional: subtle hover effect */
+.animated-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+@keyframes float {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-15px);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    75% {
+        transform: translateX(15px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
 </style>
 </head>
 <body class="font-sans">
@@ -166,267 +785,219 @@
         </div>
     </section>
     
-    <!-- Programs Preview -->
-    <section class="py-0 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-8 gsap-fade-in"> <!-- mb-12 → mb-8 -->
-    
-                <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 lg:gap-12">
-                    <!-- gap-6 → gap-4 / md:gap-8 / lg:gap-12 -->
-    
-                    <!-- Left image – smaller sizes -->
-                    <img src="/assets/h_1.png" alt="Children playing with educational toys"
-                        class="hidden md:block w-32 md:w-40 lg:w-48 h-auto object-cover" />
-    
-                    <!-- Center text block – tighter spacing -->
-                    <div class="max-w-xl flex-1"> <!-- max-w-2xl → max-w-xl (narrower text area) -->
-                        <div
-                            class="inline-block bg-primary-color/10 text-primary-color px-4 py-1.5 rounded-full mb-3 text-sm">
-                            <!-- py-2 → py-1.5, mb-4 → mb-3, added text-sm -->
-                            <span class="flex items-center justify-center">
-                                <i class="material-icons mr-2 text-base">category</i> <!-- slightly smaller icon -->
-                                Our Programs
-                            </span>
-                        </div>
-                        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-dark-color mb-3">
-                            <!-- text-3xl→2xl / md:4xl→3xl / lg: added 4xl cap -->
-                            Age-Appropriate Learning Programs
-                        </h2>
-                        <p class="text-gray-600 text-sm md:text-base"> <!-- smaller text on mobile -->
-                            We offer specialized programs designed for different age groups, focusing on holistic
-                            development.
-                        </p>
+   <!-- Programs Preview -->
+<section class="py-0 programs-section relative overflow-hidden">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-8 gsap-fade-in">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 lg:gap-12">
+                <!-- Left image – smaller sizes -->
+                <img src="/assets/h_1.png" alt="Children playing with educational toys"
+                    class="hidden md:block w-32 md:w-40 lg:w-48 h-auto object-cover" />
+
+                <!-- Center text block – tighter spacing -->
+                <div class="max-w-xl flex-1">
+                    <div class="inline-block bg-primary-color/10 text-primary-color px-4 py-1.5 rounded-full mb-3 text-sm">
+                        <span class="flex items-center justify-center">
+                            <i class="material-icons mr-2 text-base">category</i>
+                            Our Programs
+                        </span>
                     </div>
-    
-                    <!-- Right image – smaller sizes -->
-                    <img src="/assets/h_2.png" alt="Kids doing arts and crafts activity"
-                        class="hidden md:block w-32 md:w-40 lg:w-48 h-auto object-cover" />
-    
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-dark-color mb-3">
+                        Age-Appropriate Learning Programs
+                    </h2>
+                    <p class="text-gray-600 text-sm md:text-base">
+                        We offer specialized programs designed for different age groups, focusing on holistic
+                        development.
+                    </p>
+                </div>
+
+                <!-- Right image – smaller sizes -->
+                <img src="/assets/h_2.png" alt="Kids doing arts and crafts activity"
+                    class="hidden md:block w-32 md:w-40 lg:w-48 h-auto object-cover" />
+            </div>
+        </div>
+        <div class="cards-container">
+            <!-- Program 1 - Playgroup -->
+            <div class="playgroup-card">
+                <div class="card-inner">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <span class="emoji-icon">🧸</span>
+                            <h3 class="card-title">Fun Learning</h3>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">👶</span>
+                            <span><strong>Age Group:</strong> 2–4 Years</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🎨</span>
+                            <span>Activity-Based Learning</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🤝</span>
+                            <span>Creative Play & Social Skills</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🏠</span>
+                            <span>Safe & Caring Environment</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-cover">
+                    <p class="card-text">Playgroup <br>
+                    (Hover here)</p>
                 </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Program 1 - Playgroup -->
-                <div
-                    class="relative group overflow-hidden rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 bg-white">
-                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-400 to-pink-300"></div>
-                    <div class="p-7">
-                        <div class="flex items-center mb-5">
-                            <div
-                                class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-100 to-pink-50 flex items-center justify-center mr-4">
-                                <i class="material-icons text-pink-500 text-2xl">play_arrow</i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Playgroup<br><span
-                                    class="text-gray-500 font-normal text-sm">1.5-3 years</span></h3>
+
+            <!-- Program 2 - Nursery -->
+            <div class="playgroup-card">
+                <div class="card-inner">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <span class="emoji-icon">📚</span>
+                            <h3 class="card-title">Structured Learning</h3>
                         </div>
-                        <p class="text-gray-600 mb-6 leading-relaxed">Fun-filled introduction to group play, exploration,
-                            and early social skills in a warm, supportive setting.</p>
-                        <div class="space-y-3 mb-7">
-                            <div class="flex items-start">
-                                <div
-                                    class="w-5 h-5 rounded-full bg-pink-100 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                                    <div class="w-2 h-2 rounded-full bg-pink-500"></div>
-                                </div>
-                                <span class="text-gray-700">Early social & emotional development</span>
-                            </div>
-                            <div class="flex items-start">
-                                <div
-                                    class="w-5 h-5 rounded-full bg-pink-100 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                                    <div class="w-2 h-2 rounded-full bg-pink-500"></div>
-                                </div>
-                                <span class="text-gray-700">Free & guided play activities</span>
-                            </div>
-                            <div class="flex items-start">
-                                <div
-                                    class="w-5 h-5 rounded-full bg-pink-100 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                                    <div class="w-2 h-2 rounded-full bg-pink-500"></div>
-                                </div>
-                                <span class="text-gray-700">Creative exploration & sensory fun</span>
-                            </div>
+                        <div class="info-item">
+                            <span class="info-icon">👧</span>
+                            <span><strong>Age Group:</strong> 3–4 Years</span>
                         </div>
-                        <div class="pt-4 border-t border-gray-100">
-                            <a href="/programs.html" class="inline-flex items-center text-pink-600 font-medium group/link">
-                                <span>Discover our playgroup program</span>
-                                <i
-                                    class="material-icons ml-2 text-lg transition-transform group-hover/link:translate-x-1">arrow_forward</i>
-                            </a>
+                        <div class="info-item">
+                            <span class="info-icon">🔤</span>
+                            <span>Phonics & Early Literacy</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🔢</span>
+                            <span>Number Recognition</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📖</span>
+                            <span>Story Time & Creative Expression</span>
                         </div>
                     </div>
                 </div>
-    
-                <!-- Program 2 - Nursery -->
-                <div
-                    class="relative group overflow-hidden rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 bg-white">
-                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 to-blue-300"></div>
-                    <div class="p-7">
-                        <div class="flex items-center mb-5">
-                            <div
-                                class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center mr-4">
-                                <i class="material-icons text-blue-500 text-2xl">school</i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Nursery<br><span
-                                    class="text-gray-500 font-normal text-sm">3-4 years</span></h3>
-                        </div>
-                        <p class="text-gray-600 mb-6 leading-relaxed">Structured introduction to early academics, routines,
-                            and group activities to build school readiness.</p>
-                        <div class="space-y-3 mb-7">
-                            <div class="flex items-start">
-                                <div
-                                    class="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                                    <div class="w-2 h-2 rounded-full bg-blue-500"></div>
-                                </div>
-                                <span class="text-gray-700">Phonics & early literacy</span>
-                            </div>
-                            <div class="flex items-start">
-                                <div
-                                    class="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                                    <div class="w-2 h-2 rounded-full bg-blue-500"></div>
-                                </div>
-                                <span class="text-gray-700">Number recognition & basic math</span>
-                            </div>
-                            <div class="flex items-start">
-                                <div
-                                    class="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                                    <div class="w-2 h-2 rounded-full bg-blue-500"></div>
-                                </div>
-                                <span class="text-gray-700">Story time & creative expression</span>
-                            </div>
-                        </div>
-                        <div class="pt-4 border-t border-gray-100">
-                            <a href="/programs.html" class="inline-flex items-center text-blue-600 font-medium group/link">
-                                <span>Discover our nursery program</span>
-                                <i
-                                    class="material-icons ml-2 text-lg transition-transform group-hover/link:translate-x-1">arrow_forward</i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-    
-                <!-- Program 3 - LKG (Purple Theme) -->
-                <div
-                    class="relative group overflow-hidden rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 bg-white">
-                    <div class="absolute top-0 left-0 right-0 h-1 bg-black"></div>
-                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-purple-400"></div>
-                    <div class="p-7">
-                        <div class="flex items-center mb-5">
-                            <div
-                                class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center mr-4">
-                                <i class="material-icons text-purple-500 text-2xl">auto_stories</i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">LKG<br><span
-                                    class="text-gray-500 font-normal text-sm">4-5 years</span></h3>
-                        </div>
-                        <p class="text-gray-600 mb-6 leading-relaxed">Building early academic foundations with phonics,
-                            numbers, and structured play to prepare for formal learning.</p>
-                        <div class="space-y-3 mb-7">
-                            <div class="flex items-start">
-                                <div
-                                    class="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                                    <div class="w-2 h-2 rounded-full bg-purple-500"></div>
-                                </div>
-                                <span class="text-gray-700">Phonics & letter recognition</span>
-                            </div>
-                            <div class="flex items-start">
-                                <div
-                                    class="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                                    <div class="w-2 h-2 rounded-full bg-purple-500"></div>
-                                </div>
-                                <span class="text-gray-700">Number concepts & counting</span>
-                            </div>
-                            <div class="flex items-start">
-                                <div
-                                    class="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                                    <div class="w-2 h-2 rounded-full bg-purple-500"></div>
-                                </div>
-                                <span class="text-gray-700">Storytelling & creative activities</span>
-                            </div>
-                        </div>
-                        <div class="pt-4 border-t border-gray-100">
-                            <a href="/programs.html"
-                                class="inline-flex items-center text-purple-600 font-medium group/link">
-                                <span>Discover our LKG program</span>
-                                <i
-                                    class="material-icons ml-2 text-lg transition-transform group-hover/link:translate-x-1">arrow_forward</i>
-                            </a>
-                        </div>
-                    </div>
+                <div class="card-cover">
+                    <p class="card-text">Nursery</p>
                 </div>
             </div>
-    </section>
-    
-    <!-- School Highlights -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Why Little Wonders Stands Out</h2>
-    
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
-                <!-- Card 1: Child-Centric Learning -->
-                <div
-                    class="bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl p-1 shadow-md hover:shadow-2xl transition duration-300">
-                    <div class="bg-white rounded-lg flex flex-col items-center overflow-hidden h-full">
-                        <div class="w-full aspect-square flex items-center justify-center bg-gray-50">
-                            <img src="https://media.giphy.com/media/1rRTuQjCh42xUEQyie/giphy.gif"
-                                alt="Child exploring and learning curiously" class="max-w-full max-h-full object-contain"
-                                loading="lazy">
+
+            <!-- Program 3 - LKG -->
+            <div class="playgroup-card">
+                <div class="card-inner">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <span class="emoji-icon">🎓</span>
+                            <h3 class="card-title">Academic Foundation</h3>
                         </div>
-                        <h3 class="text-lg font-bold text-gray-800 mt-4 text-center px-4 pb-4">Child-Centric Learning</h3>
+                        <div class="info-item">
+                            <span class="info-icon">🧒</span>
+                            <span><strong>Age Group:</strong> 4–5 Years</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🔡</span>
+                            <span>Phonics & Letter Recognition</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🧮</span>
+                            <span>Number Concepts & Counting</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">🎭</span>
+                            <span>Storytelling & Creative Activities</span>
+                        </div>
                     </div>
                 </div>
-    
-                <!-- Card 2: Safe & Secure Environment -->
-                <div
-                    class="bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl p-1 shadow-md hover:shadow-2xl transition duration-300">
-                    <div class="bg-white rounded-lg flex flex-col items-center overflow-hidden h-full">
-                        <div class="w-full aspect-square flex items-center justify-center bg-gray-50">
-                            <img src="assets/G2.gif" alt="Secure and safe school environment with happy children"
-                                class="max-w-full max-h-full object-contain" loading="lazy">
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800 mt-4 text-center px-4 pb-4">Safe & Secure Environment
-                        </h3>
-                    </div>
-                </div>
-    
-                <!-- Card 3: Qualified & Caring Staff -->
-                <div
-                    class="bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl p-1 shadow-md hover:shadow-2xl transition duration-300">
-                    <div class="bg-white rounded-lg flex flex-col items-center overflow-hidden h-full">
-                        <div class="w-full aspect-square flex items-center justify-center bg-gray-50">
-                            <img src="assets/G2.gif" alt="Teachers and staff caring for preschool children"
-                                class="max-w-full max-h-full object-contain" loading="lazy">
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800 mt-4 text-center px-4 pb-4">Qualified & Caring Staff</h3>
-                    </div>
-                </div>
-    
-                <!-- Card 4: Play-Based Learning Discovery -->
-                <div
-                    class="bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl p-1 shadow-md hover:shadow-2xl transition duration-300">
-                    <div class="bg-white rounded-lg flex flex-col items-center overflow-hidden h-full">
-                        <div class="w-full aspect-square flex items-center justify-center bg-gray-50">
-                            <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif"
-                                alt="Children discovering and learning through playful activities"
-                                class="max-w-full max-h-full object-contain" loading="lazy">
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800 mt-4 text-center px-4 pb-4">Play-Based Learning Discovery
-                        </h3>
-                    </div>
-                </div>
-    
-                <!-- Card 5: Joyful Early Education -->
-                <div
-                    class="bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl p-1 shadow-md hover:shadow-2xl transition duration-300">
-                    <div class="bg-white rounded-lg flex flex-col items-center overflow-hidden h-full">
-                        <div class="w-full aspect-square flex items-center justify-center bg-gray-50">
-                            <img src="https://media.giphy.com/media/1rRTuQjCh42xUEQyie/giphy.gif"
-                                alt="Joyful and happy preschool children learning together"
-                                class="max-w-full max-h-full object-contain" loading="lazy">
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-800 mt-4 text-center px-4 pb-4">Joyful Early Education</h3>
-                    </div>
+                <div class="card-cover">
+                    <p class="card-text">LKG</p>
                 </div>
             </div>
         </div>
-    </section>
-    
+    </div>
+
+    <!-- Split Image at Bottom Right of First Section -->
+    <div class="absolute bottom-0 right-0 transform translate-y-1/2 z-20 pointer-events-none">
+        <img src="assets/Bing_Image_Creator-removebg-preview.png" 
+            alt="Split decorative image" 
+            class="w-64 h-64 object-cover  animate-peek-move">
+    </div>
+</section>
+
+<!-- School Highlights -->
+<section class="py-16 bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden">
+    <!-- Split Image at Top Right of Second Section -->
+    <div class="absolute top-0 right-0 transform -translate-y-1/2 z-20 pointer-events-none">
+        <img src="assets/Bing_Image_Creator-removebg-preview.png" 
+            alt="Split decorative image" 
+            class="w-64 h-64 object-cover animate-peek-move"> 
+    </div>
+
+    <!-- Floating Icons Background - Left to Right & Right to Left -->
+    <div class="absolute inset-0 opacity-30 pointer-events-none">
+        <!-- Icons moving Left to Right -->
+        <i class="fas fa-pencil-alt absolute text-4xl text-yellow-500 animate-left-to-right" style="top: 5%; left: -10%; animation-delay: 0s;"></i>
+        <i class="fas fa-star absolute text-4xl text-blue-500 animate-left-to-right" style="top: 15%; left: -15%; animation-delay: 2s;"></i>
+        <i class="fas fa-heart absolute text-5xl text-red-500 animate-left-to-right" style="top: 25%; left: -20%; animation-delay: 4s;"></i>
+        <i class="fas fa-crown absolute text-6xl text-yellow-600 animate-left-to-right" style="top: 35%; left: -25%; animation-delay: 1s;"></i>
+        <i class="fas fa-smile absolute text-4xl text-yellow-500 animate-left-to-right" style="top: 45%; left: -30%; animation-delay: 3s;"></i>
+        <i class="fas fa-leaf absolute text-4xl text-green-500 animate-left-to-right" style="top: 55%; left: -35%; animation-delay: 5s;"></i>
+        <i class="fas fa-graduation-cap absolute text-5xl text-purple-600 animate-left-to-right" style="top: 65%; left: -40%; animation-delay: 0.5s;"></i>
+        <i class="fas fa-cloud absolute text-6xl text-blue-300 animate-left-to-right" style="top: 75%; left: -45%; animation-delay: 2.5s;"></i>
+        <i class="fas fa-bell absolute text-4xl text-orange-500 animate-left-to-right" style="top: 85%; left: -50%; animation-delay: 4.5s;"></i>
+        <i class="fas fa-music absolute text-5xl text-purple-500 animate-left-to-right" style="top: 95%; left: -55%; animation-delay: 1.5s;"></i>
+
+        <!-- Icons moving Right to Left -->
+        <i class="fas fa-book absolute text-5xl text-red-400 animate-right-to-left" style="top: 8%; right: -10%; animation-delay: 1s;"></i>
+        <i class="fas fa-paint-brush absolute text-6xl text-pink-500 animate-right-to-left" style="top: 18%; right: -15%; animation-delay: 3s;"></i>
+        <i class="fas fa-crayon absolute text-3xl text-orange-500 animate-right-to-left" style="top: 28%; right: -20%; animation-delay: 5s;"></i>
+        <i class="fas fa-apple-alt absolute text-5xl text-red-400 animate-right-to-left" style="top: 38%; right: -25%; animation-delay: 0.2s;"></i>
+        <i class="fas fa-globe absolute text-6xl text-blue-600 animate-right-to-left" style="top: 48%; right: -30%; animation-delay: 2.2s;"></i>
+        <i class="fas fa-sun absolute text-5xl text-yellow-600 animate-right-to-left" style="top: 58%; right: -35%; animation-delay: 4.2s;"></i>
+        <i class="fas fa-palette absolute text-4xl text-pink-500 animate-right-to-left" style="top: 68%; right: -40%; animation-delay: 0.8s;"></i>
+        <i class="fas fa-rocket absolute text-5xl text-red-500 animate-right-to-left" style="top: 78%; right: -45%; animation-delay: 2.8s;"></i>
+        <i class="fas fa-gift absolute text-4xl text-purple-500 animate-right-to-left" style="top: 88%; right: -50%; animation-delay: 4.8s;"></i>
+        <i class="fas fa-robot absolute text-5xl text-blue-400 animate-right-to-left" style="top: 98%; right: -55%; animation-delay: 1.8s;"></i>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16">
+            <!-- Card 1: Activity Based Learning -->
+            <div class="group flex flex-col items-center">
+                <div class="w-40 h-40 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 shadow-xl group-hover:shadow-2xl transform group-hover:scale-110 transition duration-300 mb-4 flex items-center justify-center">
+                    <span class="text-7xl font-bold text-white drop-shadow-lg" style="font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;">A</span>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-1 text-center">Activity Based</h3>
+                <p class="text-gray-500 text-sm text-center">Hands-on experiences that make learning fun</p>
+            </div>
+
+            <!-- Card 2: Beyond Books -->
+            <div class="group flex flex-col items-center">
+                <div class="w-40 h-40 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 shadow-xl group-hover:shadow-2xl transform group-hover:scale-110 transition duration-300 mb-4 flex items-center justify-center">
+                    <span class="text-7xl font-bold text-white drop-shadow-lg" style="font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;">B</span>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-1 text-center">Beyond Books</h3>
+                <p class="text-gray-500 text-sm text-center">Real-world skills for holistic development</p>
+            </div>
+
+            <!-- Card 3: Creative Exploration -->
+            <div class="group flex flex-col items-center">
+                <div class="w-40 h-40 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 shadow-xl group-hover:shadow-2xl transform group-hover:scale-110 transition duration-300 mb-4 flex items-center justify-center">
+                    <span class="text-7xl font-bold text-white drop-shadow-lg" style="font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;">C</span>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-1 text-center">Creative Exploration</h3>
+                <p class="text-gray-500 text-sm text-center">Imagination through art, music, and play</p>
+            </div>
+
+            <!-- Card 4: Development for Life -->
+            <div class="group flex flex-col items-center">
+                <div class="w-40 h-40 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 shadow-xl group-hover:shadow-2xl transform group-hover:scale-110 transition duration-300 mb-4 flex items-center justify-center">
+                    <span class="text-7xl font-bold text-white drop-shadow-lg" style="font-family: 'Comic Sans MS', 'Chalkboard SE', cursive;">D</span>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-1 text-center">Development for Life</h3>
+                <p class="text-gray-500 text-sm text-center">Building character and lifelong skills</p>
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- Program Overview -->
     <section class="py-5">
         <div class="container mx-auto px-4">
@@ -438,150 +1009,125 @@
     
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
     
-                <!-- Playgroup -->
-                <div class="relative text-center bg-white rounded-xl shadow-xl pt-16 px-6 pb-8">
-    
-                    <img src="assets/Our Programs_1.png" alt="Children playing in playgroup"
-                        class="w-32 h-auto absolute inset-x-0 mx-auto -top-16">
-    
-                    <h3 class="text-xl font-bold text-[#1a3c34] mt-2 mb-5">
-                        Playgroup
-                        <span
-                            class="block w-12 h-0.5 mt-2 mx-auto bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></span>
-                    </h3>
-    
-                    <p class="text-gray-600 mb-4">
-                        For children aged 2-3 years. Focus on sensory play and social skills.
-                    </p>
-    
-                    <!-- <a href="programs.html"
-               class="text-indigo-600 font-medium inline-flex items-center hover:text-indigo-800 transition-colors">
-                Learn more
-                <span class="material-icons ml-1 text-lg">arrow_forward</span>
-            </a> -->
-    
-                </div>
-    
-                <!-- Nursery -->
-                <div class="relative text-center bg-white rounded-xl shadow-xl pt-16 px-6 pb-8">
-    
-                    <!-- Centered illustration (replace with your actual nursery-themed image) -->
-                    <img src="assets//Our Programs_2.png" alt="Children in nursery class learning and playing"
-                        class="w-28 h-auto absolute inset-x-0 mx-auto -top-20">
-    
-                    <h3 class="text-xl font-bold text-[#1a3c34] mt-2 mb-5">
-                        Nursery
-                        <span
-                            class="block w-12 h-0.5 mt-2 mx-auto bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></span>
-                    </h3>
-                    <p class="text-gray-600 mb-4">
-                        For children aged 3-4 years. Introduction to basic concepts and language.
-                    </p>
-    
-                    <!-- <a href="programs.html"
-               class="text-emerald-600 font-medium inline-flex items-center hover:text-emerald-800 transition-colors">
-                Learn more
-                <span class="material-icons ml-1 text-lg">arrow_forward</span>
-            </a> -->
-    
-                </div>
-    
-                <!-- LKG -->
-                <div class="relative text-center bg-white rounded-xl shadow-xl pt-16 px-6 pb-8">
-    
-                    <!-- Centered illustration (replace with your actual LKG-themed image) -->
-                    <img src="assets/Our Programs_3.png" alt="Children aged 4-5 doing pre-writing and drawing activities"
-                        class="w-36 h-auto absolute inset-x-0 mx-auto -top-20">
-    
-                    <h3 class="text-xl font-bold text-[#1a3c34] mt-2 mb-5">
-                        LKG
-                        <span
-                            class="block w-12 h-0.5 mt-2 mx-auto bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></span>
-                    </h3>
-                    <p class="text-gray-600 mb-4">
-                        For children aged 4-5 years. Developing pre-reading and pre-writing skills.
-                    </p>
-    
-                    <!-- <a href="programs.html"
-               class="text-amber-600 font-medium inline-flex items-center hover:text-amber-800 transition-colors">
-                Learn more
-                <span class="material-icons ml-1 text-lg">arrow_forward</span>
-            </a> -->
-                </div>
-    
-                <!-- UKG -->
-                <div class="relative text-center bg-white rounded-xl shadow-xl pt-16 px-6 pb-8">
-    
-                    <!-- Centered illustration (replace with your actual UKG-themed image) -->
-                    <img src="assets/Our Programs_4.png"
-                        alt="Children aged 5-6 years engaged in school readiness activities and reading"
-                        class="w-36 h-auto absolute inset-x-0 mx-auto -top-20">
-    
-                    <h3 class="text-xl font-bold text-[#1a3c34] mt-2 mb-5">
-                        UKG
-                        <span
-                            class="block w-12 h-0.5 mt-2 mx-auto bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></span>
-                    </h3>
-                    <p class="text-gray-600 mb-4">
-                        For children aged 5-6 years. School readiness with advanced concepts.
-                    </p>
-    
-                    <!-- <a href="programs.html"
-               class="text-pink-600 font-medium inline-flex items-center hover:text-pink-800 transition-colors">
-                Learn more
-                <span class="material-icons ml-1 text-lg">arrow_forward</span>
-            </a> -->
-    
-                </div>
+                <!-- Playgroup Card -->
+<div class="relative text-center rounded-xl shadow-xl pt-16 px-6 pb-8 animated-card"
+     style="background-image: linear-gradient(to top, #ff6b6b, #f9a8a8, #ffecec, #fff5f5);">
+    <img src="assets/Our Programs_1.png" alt="Children playing in playgroup"
+         class="w-32 h-auto absolute inset-x-0 mx-auto -top-16">
+    <h3 class="text-xl font-bold text-[#1a3c34] mt-2 mb-5">
+        Playgroup
+        <span class="block w-12 h-0.5 mt-2 mx-auto bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></span>
+    </h3>
+    <p class="text-gray-800 mb-4 font-medium"> <!-- darker text for contrast -->
+        For children aged 2-3 years. Focus on sensory play and social skills.
+    </p>
+</div>
+
+<!-- Nursery Card -->
+<div class="relative text-center rounded-xl shadow-xl pt-16 px-6 pb-8 animated-card"
+     style="background-image: linear-gradient(to top, #4ecdc4, #a2e4d8, #e0f7fa, #f0fdff);">
+    <img src="assets/Our Programs_2.png" alt="Children in nursery class learning and playing"
+         class="w-28 h-auto absolute inset-x-0 mx-auto -top-20">
+    <h3 class="text-xl font-bold text-[#1a3c34] mt-2 mb-5">
+        Nursery
+        <span class="block w-12 h-0.5 mt-2 mx-auto bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></span>
+    </h3>
+    <p class="text-gray-800 mb-4 font-medium">
+        For children aged 3-4 years. Introduction to basic concepts and language.
+    </p>
+</div>
+
+<!-- LKG Card -->
+<div class="relative text-center rounded-xl shadow-xl pt-16 px-6 pb-8 animated-card"
+     style="background-image: linear-gradient(to top, #a78bfa, #d7bdea, #f3e8ff, #faf5ff);">
+    <img src="assets/Our Programs_3.png" alt="Children aged 4-5 doing pre-writing and drawing activities"
+         class="w-36 h-auto absolute inset-x-0 mx-auto -top-20">
+    <h3 class="text-xl font-bold text-[#1a3c34] mt-2 mb-5">
+        LKG
+        <span class="block w-12 h-0.5 mt-2 mx-auto bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></span>
+    </h3>
+    <p class="text-gray-800 mb-4 font-medium">
+        For children aged 4-5 years. Developing pre-reading and pre-writing skills.
+    </p>
+</div>
+
+<!-- UKG Card -->
+<div class="relative text-center rounded-xl shadow-xl pt-16 px-6 pb-8 animated-card"
+     style="background-image: linear-gradient(to top, #ffaa00, #ffd166, #fff9e6, #fffef5);">
+    <img src="assets/Our Programs_4.png" alt="Children aged 5-6 years engaged in school readiness activities and reading"
+         class="w-36 h-auto absolute inset-x-0 mx-auto -top-20">
+    <h3 class="text-xl font-bold text-[#1a3c34] mt-2 mb-5">
+        UKG
+        <span class="block w-12 h-0.5 mt-2 mx-auto bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></span>
+    </h3>
+    <p class="text-gray-800 mb-4 font-medium">
+        For children aged 5-6 years. School readiness with advanced concepts.
+    </p>
+</div>
             </div>
         </div>
     </section>
     
     <!-- CTA Section - SIMPLER VERSION -->
-    <section class="relative py-20 text-white overflow-hidden">
-    
-        <!-- Background Video with CSS overlay -->
-        <div class="absolute inset-0">
-            <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline
-                style="filter: brightness(0.7);">
-                <source src="assets/CTA.mp4" type="video/mp4">
-            </video>
-    
-            <!-- Simple overlay -->
-            <div class="absolute inset-0 bg-gradient-to-r from-indigo-900/70 via-purple-900/50 to-indigo-900/70"></div>
-        </div>
-    
-        <div class="relative container mx-auto px-4 text-center z-10">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">
-                Ready to Begin Your Child's Learning Journey?
-            </h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto text-white/90">
-                Join the Little Wonders family and give your child the best start in their educational journey.
-            </p>
-    
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <!-- <a href="admissions.html"
-                   class="bg-white text-indigo-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105 shadow-lg">
-                    Enroll Now
-                </a> -->
-                <a href="contact.html"
-                    class="bg-transparent border-2 border-white hover:bg-white/10 px-8 py-4 rounded-lg font-semibold text-lg transition-all transform hover:scale-105">
-                    Schedule a Visit
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Back to Top Button -->
-    <button id="backToTop" class="fixed bottom-8 right-8 z-50 hidden w-14 h-14 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white 
-                   flex items-center justify-center shadow-xl hover:shadow-2xl 
-                   transition-all duration-300 transform hover:scale-110" aria-label="Back to top">
-        <span class="material-icons">expand_less</span>
-    </button>
+<section 
+class="relative py-16 text-white rounded-2xl p-10 text-center overflow-hidden shadow-xl mb-12 max-w-7xl mx-auto bg-cover"
+style="background-image: url('assets/download.jfif'); background-position: center 70%;">
 
-    <!-- Footer -->
-<footer class="bg-gray-800 text-white py-12">
-    <div class="container mx-auto px-4">
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-orange-500/80 to-orange-600/80 rounded-2xl"></div>
+
+    <!-- Animated background elements -->
+    <div class="absolute inset-0 overflow-hidden z-0 rounded-2xl">
+        <div class="absolute -top-4 -left-4 w-24 h-24 bg-white opacity-10 rounded-full"></div>
+        <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-white opacity-10 rounded-full"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white opacity-5 rounded-full"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-4 animate-fade-in-down">
+            Ready to Discover Our Solutions?
+        </h2>
+        <p class="text-lg mb-6 opacity-90 animate-fade-in-up max-w-2xl mx-auto">
+            Join countless satisfied customers who rely on Kunash Enterprises for their tech needs.
+        </p>
+       <a href="contact.html"
+   class="inline-block bg-indigo-700 text-white px-8 py-4 rounded-xl font-semibold 
+   transition-all duration-300 shadow-lg hover:shadow-xl hover:bg-indigo-800">
+   Get In Touch <i class="fas fa-arrow-right ml-2"></i>
+</a>
+    </div>
+</section>
+
+
+   <!-- Back to Top Image Button -->
+<button id="backToTop"
+    class="fixed bottom-8 right-8 z-50 hidden 
+           transition-transform duration-300 hover:scale-110"
+    aria-label="Back to top">
+
+    <img src="assets/pencil.png"
+         alt="Back to Top"
+         class="w-16 animate-bounce drop-shadow-xl">
+
+</button>
+
+
+   <!-- Footer -->
+<footer class="bg-gray-800 text-white py-12 relative overflow-hidden">
+    <!-- Right Side Image (Animated) -->
+    <div class="absolute top-0 right-0 w-full h-full pointer-events-none" style="z-index: 2;">
+        <img src="assets/Footer-removebg-preview.png" alt="Children playing illustration" 
+             class="absolute w-96 h-auto animate-float"
+             style="right: -10%; bottom: -20px;">
+        <!-- 
+            - Added bottom: -20px to shift image down
+            - Adjust this value to move up/down
+        -->
+    </div>
+    
+    <div class="container mx-auto px-4 relative" style="z-index: 3;">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <!-- School Info -->
             <div>
@@ -594,7 +1140,6 @@
                 <p class="text-gray-300">Providing quality early childhood education since 2010. Nurturing young minds
                     with care, creativity, and innovation.</p>
             </div>
-
             <!-- Quick Links -->
             <div class="md:pl-20">
                 <h4 class="text-lg font-bold mb-6 flex items-center">
@@ -616,7 +1161,6 @@
                     </li>
                 </ul>
             </div>
-
             <!-- More Links -->
             <div>
                 <h4 class="text-lg font-bold mb-6 flex items-center">
@@ -634,7 +1178,6 @@
                     </li>
                 </ul>
             </div>
-
             <!-- Contact Info -->
             <div>
                 <h4 class="text-lg font-bold mb-6 flex items-center">
@@ -655,7 +1198,6 @@
                         <span class="text-gray-300">info@littlewonders.edu</span>
                     </li>
                 </ul>
-
                 <!-- Optional: Add social media icons -->
                 <!-- <div class="mt-6">
                     <h5 class="text-md font-semibold mb-3 flex items-center">
@@ -676,7 +1218,6 @@
                 </div> -->
             </div>
         </div>
-
         <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <p class="mb-4 md:mb-0">&copy; 2026 Little Wonders. All rights reserved.</p>
@@ -688,6 +1229,7 @@
         </div>
     </div>
 </footer>
+
     
     <!-- JavaScript Files -->
     <script src="js/main.js"></script>
